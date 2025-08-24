@@ -148,7 +148,7 @@
 </footer>
 
 <script>
-  const apiURL = "https://script.google.com/macros/s/AKfycbzPCSn2WVdKYMqLrKCd-41zzgFKod5f0tlAE1zriYpIQJU03m5luXV0baakQPCN_1qOUw/exec"; 
+  const apiURL = "https://script.google.com/macros/s/AKfycbwF6ha3hG_hheXfjHx-WRoQ8Ovw_xLHA-JuYes_sYyyYv_STzUR_A9ujxY0vbmFLIiRmA/exec"; 
   let currentCategory = "All";
   let products = [];
   let currentPage = 1;
@@ -162,15 +162,15 @@
   // Logo kategori pakai gambar lokal (kayak profil/sampul)
   const logoMap = {
     "All": "logo/all.jpg",
-    "Iphone": "logo/iphone.jpg",
-    "Oppo": "logo/oppo.jpg",
-    "Vivo": "logo/vivo.jpg",
-    "Samsung": "logo/samsung.jpg",
-    "Xiaomi": "logo/xiaomi.jpg",
-    "Realme": "logo/realme.jpg",
-    "Infinix": "logo/infinix.jpg",
-    "Tecno": "logo/tecno.jpg",
-    "Itel": "logo/itel.jpg"
+    "Iphone": "logo/Iphone.jpg",
+    "Oppo": "logo/Oppo.jpg",
+    "Vivo": "logo/Vivo.jpg",
+    "Samsung": "logo/Samsung.jpg",
+    "Xiaomi": "logo/Xiaomi.jpg",
+    "Realme": "logo/Realme.jpg",
+    "Infinix": "logo/Infinix.jpg",
+    "Tecno": "logo/Tecno.jpg",
+    "Itel": "logo/iTel.jpg"
   };
 
   async function fetchProducts() {
