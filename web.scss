@@ -26,12 +26,16 @@
     .kategori-list {display:flex;gap:20px;overflow-x:auto;padding-bottom:10px;}
     .kategori-item {flex:0 0 auto;text-align:center;cursor:pointer;}
     .kategori-item img {
-      width:60px;height:60px;object-fit:contain;border-radius:50%;
-      background:#f8f8f8;padding:10px;
-      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+      width:65px;
+      height:65px;
+      object-fit:cover;          /* potong gambar rapi */
+      border-radius:50%;         /* bulat seperti profil */
+      border:2px solid #fff;     /* border putih */
+      background:#f3f4f6;
+      box-shadow:0 2px 6px rgba(0,0,0,0.15);
       transition:transform .2s;
     }
-    .kategori-item img:hover {transform:scale(1.1);}
+    .kategori-item img:hover {transform:scale(1.08);}
     .kategori-item span {display:block;margin-top:6px;font-size:14px;color:#333;}
 
     /* Produk Grid */
@@ -144,7 +148,7 @@
 </footer>
 
 <script>
-  const apiURL = "https://script.google.com/macros/s/AKfycbxi9VrTQS_vE79d-oUfElTaUY_WcVTjx4j1TriWMo-3w1iRNNQLu3m6U1BhyDgGVxoZmQ/exec"; 
+  const apiURL = "https://script.google.com/macros/s/AKfycbzPCSn2WVdKYMqLrKCd-41zzgFKod5f0tlAE1zriYpIQJU03m5luXV0baakQPCN_1qOUw/exec"; 
   let currentCategory = "All";
   let products = [];
   let currentPage = 1;
@@ -155,19 +159,18 @@
   const categoryList = document.getElementById("categoryList");
   const pagination = document.getElementById("pagination");
 
+  // Logo kategori pakai gambar lokal (kayak profil/sampul)
   const logoMap = {
-    "All": "logo/all.png",
-    "Iphone": "logo/iPhone.png",
-    "Oppo": "logo/oppo.png",
-    "Vivo": "logo/vivo.png",
-    "Samsung": "logo/samsung.png",
-    "Xiaomi": "logo/xiaomi.png",
-    "Realme": "logo/realme.png",
-    "Infinix": "logo/infinix.png",
-    "Tecno": "logo/tecno.png",
-    "Itel": "logo/itel.png"
-    "Huawei": "logo/huawei.png"
-    "Nokia": "logo/nokia.png"
+    "All": "logo/all.jpg",
+    "Iphone": "logo/iphone.jpg",
+    "Oppo": "logo/oppo.jpg",
+    "Vivo": "logo/vivo.jpg",
+    "Samsung": "logo/samsung.jpg",
+    "Xiaomi": "logo/xiaomi.jpg",
+    "Realme": "logo/realme.jpg",
+    "Infinix": "logo/infinix.jpg",
+    "Tecno": "logo/tecno.jpg",
+    "Itel": "logo/itel.jpg"
   };
 
   async function fetchProducts() {
@@ -189,7 +192,7 @@
     categories.forEach(cat => {
       let item = document.createElement("div");
       item.className = "kategori-item";
-      let logo = logoMap[cat] || "logo/default.png";
+      let logo = logoMap[cat] || "logo/default.jpg";
       item.innerHTML = `<img src="${logo}" alt="${cat}"><span>${cat}</span>`;
       item.addEventListener("click", () => {
         currentCategory = cat;
@@ -242,10 +245,8 @@
       productGrid.appendChild(card);
     });
 
-    // --- Pagination dengan < 1 ... 4 5 6 ... 100 > ---
+    // Pagination < 1 ... > style
     pagination.innerHTML = "";
-
-    // Tombol Prev
     if (currentPage > 1) {
       let prevBtn = document.createElement("button");
       prevBtn.textContent = "<";
@@ -255,7 +256,6 @@
       });
       pagination.appendChild(prevBtn);
     }
-
     for (let i = 1; i <= totalPages; i++) {
       if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
         let btn = document.createElement("button");
@@ -276,8 +276,6 @@
         pagination.appendChild(dots);
       }
     }
-
-    // Tombol Next
     if (currentPage < totalPages) {
       let nextBtn = document.createElement("button");
       nextBtn.textContent = ">";
