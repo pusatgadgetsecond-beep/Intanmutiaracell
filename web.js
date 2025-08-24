@@ -137,7 +137,7 @@
 
 <!-- Tempel script ini di bagian paling bawah sebelum </body> -->
 <script>
-  const apiURL = "https://script.google.com/macros/s/AKfycbyslc-is5NJUUisNz6LFMOK6UXoiwWeoHl6TC-swbEq_JN6Bv3eQND4WcAcdGs0x45aqg/exec"; // GANTI INI!
+  const apiURL = "hhttps://script.google.com/macros/s/AKfycbz0ei6wSbGQd4duEMtSrSjANRz8Brk2hQxarEl76WZSo2gYlL4tUXo3spMXl3Jiv3M9/exec"; // GANTI INI!
 
   const perPage = 50;
   let currentPage = 1;
