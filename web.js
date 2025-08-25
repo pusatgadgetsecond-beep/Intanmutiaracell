@@ -167,7 +167,7 @@
 
    const logoMap = {
     "All": "Intanmutiaracell/all.png",
-    "iPhone": "Intanmutiaracell/iphone.png",
+    "iPhone": "Intanmutiaracell/iPhone.png",
     "Oppo": "Intanmutiaracell/oppo.png",
     "Vivo": "Intanmutiaracell/vivo.png",
     "Samsung": "Intanmutiaracell/samsung.png",
