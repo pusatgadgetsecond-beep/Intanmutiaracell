@@ -168,20 +168,20 @@ const categoryList = document.getElementById("categoryList");
 const pagination = document.getElementById("pagination");
 
 const logoMap = {
-  "All": "images/Intanmutiaracell/all.png",
-  "iPhone": "images/Intanmutiaracell/iPhone.png",
-  "Oppo": "images/Intanmutiaracell/Oppo.png",
-  "Vivo": "images/Intanmutiaracell/Vivo.png",
-  "Samsung": "images/Intanmutiaracell/Samsung.png",
-  "Xiaomi": "images/Intanmutiaracell/Xiaomi.png",
-  "Realme": "images/Intanmutiaracell/Realme.png",
-  "Infinix": "images/Intanmutiaracell/Infinix.png",
-  "Tecno": "images/Intanmutiaracell/Tecno.png",
-  "iTel": "images/Intanmutiaracell/iTel.png",
-  "Nokia": "images/Intanmutiaracell/Nokia.png",
-  "ZTE": "images/Intanmutiaracell/ZTE.png",
-  "Asus": "images/Intanmutiaracell/Asus.png",
-  "Huawei": "images/Intanmutiaracell/Huawei.png",
+  "All": "Intanmutiaracell/all.png",
+  "iPhone": "Intanmutiaracell/iPhone.png",
+  "Oppo": "Intanmutiaracell/Oppo.png",
+  "Vivo": "Intanmutiaracell/Vivo.png",
+  "Samsung": "Intanmutiaracell/Samsung.png",
+  "Xiaomi": "Intanmutiaracell/Xiaomi.png",
+  "Realme": "Intanmutiaracell/Realme.png",
+  "Infinix": "Intanmutiaracell/Infinix.png",
+  "Tecno": "Intanmutiaracell/Tecno.png",
+  "iTel": "Intanmutiaracell/iTel.png",
+  "Nokia": "Intanmutiaracell/Nokia.png",
+  "ZTE": "Intanmutiaracell/ZTE.png",
+  "Asus": "Intanmutiaracell/Asus.png",
+  "Huawei": "Intanmutiaracell/Huawei.png",
 };
 
 async function fetchProducts() {
