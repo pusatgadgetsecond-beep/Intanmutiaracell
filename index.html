@@ -28,9 +28,9 @@
     .kategori-item img {
       width:65px;
       height:65px;
-      object-fit:cover;          /* potong gambar rapi */
-      border-radius:50%;         /* bulat seperti profil */
-      border:2px solid #fff;     /* border putih */
+      object-fit:cover;
+      border-radius:50%;
+      border:2px solid #fff;
       background:#f3f4f6;
       box-shadow:0 2px 6px rgba(0,0,0,0.15);
       transition:transform .2s;
@@ -43,8 +43,13 @@
     .product-section h2{margin:10px 0 15px;color:#1e3a8a;}
     .product-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
       gap:15px;
+      grid-template-columns:repeat(2,1fr); /* HP = 2 kolom */
+    }
+    @media (min-width:768px){
+      .product-grid{
+        grid-template-columns:repeat(5,1fr); /* Tablet/PC = 5 kolom */
+      }
     }
     .product-card{
       background:#fff;
@@ -152,25 +157,28 @@
   let currentCategory = "All";
   let products = [];
   let currentPage = 1;
-  const perPage = 8;
+  let perPage = window.innerWidth < 768 ? 16 : 40;
 
   const productGrid = document.getElementById("productGrid");
   const searchInput = document.getElementById("searchInput");
   const categoryList = document.getElementById("categoryList");
   const pagination = document.getElementById("pagination");
 
-  // Logo kategori pakai gambar lokal (kayak profil/sampul)
   const logoMap = {
-    "All": "logo/all.jpg",
-    "Iphone": "logo/Iphone.jpg",
-    "Oppo": "logo/Oppo.jpg",
-    "Vivo": "logo/Vivo.jpg",
-    "Samsung": "logo/Samsung.jpg",
-    "Xiaomi": "logo/Xiaomi.jpg",
-    "Realme": "logo/Realme.jpg",
-    "Infinix": "logo/Infinix.jpg",
-    "Tecno": "logo/Tecno.jpg",
-    "Itel": "logo/iTel.jpg"
+    "All": "logo/all.png",
+    "iPhone": "logo/iPhone.png",
+    "Oppo": "logo/Oppo.png",
+    "Vivo": "logo/Vivo.png",
+    "Samsung": "logo/Samsung.png",
+    "Xiaomi": "logo/Xiaomi.png",
+    "Realme": "logo/Realme.png",
+    "Infinix": "logo/Infinix.png",
+    "Tecno": "logo/Tecno.png",
+    "iTel": "logo/itel.png",
+    "Nokia": "logo/Nokia.png",
+    "ZTE": "logo/zte.png",
+    "Asus": "logo/asus.png",
+    "Huawei": "logo/huawei.png",
   };
 
   async function fetchProducts() {
@@ -245,7 +253,6 @@
       productGrid.appendChild(card);
     });
 
-    // Pagination < 1 ... > style
     pagination.innerHTML = "";
     if (currentPage > 1) {
       let prevBtn = document.createElement("button");
@@ -288,6 +295,12 @@
   }
 
   searchInput.addEventListener("input", () => {
+    currentPage = 1;
+    renderProducts(searchInput.value);
+  });
+
+  window.addEventListener("resize", () => {
+    perPage = window.innerWidth < 768 ? 16 : 40;
     currentPage = 1;
     renderProducts(searchInput.value);
   });
