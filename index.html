@@ -148,7 +148,7 @@
 </footer>
 
 <script>
-  const apiURL = "https://script.google.com/macros/s/AKfycbz0CCf47s9PudeOby0mcT8c0B2TmkVhuBJOZFJlq4tcxGV837OGRBGnBMoF8ex3VrZxuA/exec"; 
+  const apiURL = "https://script.google.com/macros/s/AKfycbwEnT0Gq-14KSET5d-G0VHUgKXBZhOCaM6xQJvD9E9ezddMTifYOkugdEDK7A2JsTSBAA/exec"; 
   let currentCategory = "All";
   let products = [];
   let currentPage = 1;
