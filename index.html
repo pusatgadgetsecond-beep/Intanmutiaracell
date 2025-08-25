@@ -142,20 +142,20 @@
   const pagination = document.getElementById("pagination");
 
   const logoMap = {
-    "All": "Intanmutiaracell/all.png",
-    "iPhone": "Intanmutiaracell/iPhone.png",
-    "Oppo": "Intanmutiaracell/oppo.png",
-    "Vivo": "Intanmutiaracell/vivo.png",
-    "Samsung": "Intanmutiaracell/samsung.png",
-    "Xiaomi": "Intanmutiaracell/xiaomi.png",
-    "Realme": "Intanmutiaracell/realme.png",
-    "Infinix": "Intanmutiaracell/infinix.png",
-    "Tecno": "Intanmutiaracell/tecno.png",
-    "iTel": "Intanmutiaracell/itel.png",
-    "Nokia": "Intanmutiaracell/nokia.png",
-    "ZTE": "Intanmutiaracell/zte.png",
-    "Asus": "Intanmutiaracell/asus.png",
-    "Huawei": "Intanmutiaracell/huawei.png",
+    "All": "images/Intanmutiaracell/all.png",
+    "iPhone": "images/Intanmutiaracell/iPhone.png",
+    "Oppo": "images/Intanmutiaracell/Oppo.png",
+    "Vivo": "images/Intanmutiaracell/Vivo.png",
+    "Samsung": "images/Intanmutiaracell/Samsung.png",
+    "Xiaomi": "images/Intanmutiaracell/Xiaomi.png",
+    "Realme": "images/Intanmutiaracell/Realme.png",
+    "Infinix": "images/Intanmutiaracell/Infinix.png",
+    "Tecno": "images/Intanmutiaracell/Tecno.png",
+    "iTel": "images/Intanmutiaracell/iTel.png",
+    "Nokia": "images/Intanmutiaracell/Nokia.png",
+    "ZTE": "images/Intanmutiaracell/ZTE.png",
+    "Asus": "images/Intanmutiaracell/Asus.png",
+    "Huawei": "images/Intanmutiaracell/Huawei.png"
   };
 
   async function fetchProducts() {
@@ -166,7 +166,7 @@
       generateCategories();
       renderProducts();
     } catch (err) {
-      productGrid.innerHTML = "<p>⚠️ Gagal memuat produk. Periksa koneksi atau API!</p>";
+      productGrid.innerHTML = "<p>Gagal memuat produk. Periksa koneksi atau API!</p>";
       console.error(err);
     }
   }
@@ -177,8 +177,8 @@
     categories.forEach(cat => {
       let item = document.createElement("div");
       item.className = "kategori-item";
-      let logo = logoMap[cat] || "logo/default.jpg";
-      item.innerHTML = `<img src="${logo}" alt="${cat}" onerror="this.src='logo/default.jpg'"><span>${cat}</span>`;
+      let logo = logoMap[cat] || "images/Intanmutiaracell/all.png";
+      item.innerHTML = `<img src="${logo}" alt="${cat}"><span>${cat}</span>`;
       item.addEventListener("click", () => {
         currentCategory = cat;
         currentPage = 1;
@@ -196,7 +196,7 @@
     );
 
     if (filtered.length === 0) {
-      productGrid.innerHTML = "<p>❌ Produk tidak ditemukan.</p>";
+      productGrid.innerHTML = "<p>Produk tidak ditemukan.</p>";
       pagination.innerHTML = "";
       return;
     }
@@ -211,7 +211,7 @@
       card.className = "product-card";
       card.innerHTML = `
         <div class="product-image">
-          <img src="${p.image}" alt="${p.title}" onerror="this.src='logo/default.jpg'">
+          <img src="${p.image}" alt="${p.title}">
           <span class="badge-cicilan">Cicilan 0%</span>
         </div>
         <div class="product-info">
@@ -222,8 +222,8 @@
           </div>
           <div class="product-meta">⭐ ${p.rating || "4.8"} | Terjual ${p.sold || "100+"}</div>
           <div class="buy-links">
-            ${p.shopee ? `<a href="${p.shopee}" target="_blank" class="shopee">Shopee</a>` : ""}
-            ${p.tokopedia ? `<a href="${p.tokopedia}" target="_blank" class="tokopedia">Tokopedia</a>` : ""}
+            <a href="${p.shopee}" target="_blank" class="shopee">Shopee</a>
+            <a href="${p.tokopedia}" target="_blank" class="tokopedia">Tokopedia</a>
           </div>
         </div>
       `;
@@ -234,27 +234,41 @@
     if (currentPage > 1) {
       let prevBtn = document.createElement("button");
       prevBtn.textContent = "<";
-      prevBtn.onclick = () => { currentPage--; renderProducts(searchInput.value); };
+      prevBtn.addEventListener("click", () => {
+        currentPage--;
+        renderProducts(searchInput.value);
+      });
       pagination.appendChild(prevBtn);
     }
+
     for (let i = 1; i <= totalPages; i++) {
       if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
         let btn = document.createElement("button");
         btn.textContent = i;
         if (i === currentPage) btn.classList.add("active");
-        btn.onclick = () => { currentPage = i; renderProducts(searchInput.value); };
+        btn.addEventListener("click", () => {
+          currentPage = i;
+          renderProducts(searchInput.value);
+        });
         pagination.appendChild(btn);
-      } else if (i === currentPage - 3 || i === currentPage + 3) {
+      } else if (
+        (i === currentPage - 3 && currentPage > 4) ||
+        (i === currentPage + 3 && currentPage < totalPages - 3)
+      ) {
         let dots = document.createElement("span");
         dots.textContent = "...";
         dots.style.padding = "6px 10px";
         pagination.appendChild(dots);
       }
     }
+
     if (currentPage < totalPages) {
       let nextBtn = document.createElement("button");
       nextBtn.textContent = ">";
-      nextBtn.onclick = () => { currentPage++; renderProducts(searchInput.value); };
+      nextBtn.addEventListener("click", () => {
+        currentPage++;
+        renderProducts(searchInput.value);
+      });
       pagination.appendChild(nextBtn);
     }
   }
