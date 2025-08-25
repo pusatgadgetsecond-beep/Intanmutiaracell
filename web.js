@@ -295,6 +295,6 @@ function renderPagination(totalPages) {
 }
 
 searchInput.addEventListener("input", () => { currentPage = 1; renderProducts(searchInput.value); });
-window.addEventListener("resize", () => { perPage = window.innerWidth < 768 ? 16 : 40; currentPage = 1; renderProducts(searchInput.value); });
+window.addEventListener("resize", () => { perPage = window.innerWidth < 768 ? 16 : 40; renderProducts(searchInput.value); });
 
 fetchProducts();
