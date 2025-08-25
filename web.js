@@ -21,13 +21,13 @@
 
     /* Kategori */
     .kategori-container {padding:20px;background:#fff;margin-top:10px;}
-    .kategori-title {font-size:18px;font-weight:600;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;}
+    .kategori-title {display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;}
+    .kategori-title h2{font-size:18px;font-weight:600;margin:0;}
     .lihat-semua {font-size:14px;color:#e11d48;text-decoration:none;}
     .kategori-list {display:flex;gap:20px;overflow-x:auto;padding-bottom:10px;}
     .kategori-item {flex:0 0 auto;text-align:center;cursor:pointer;}
     .kategori-item img {
-      width:65px;
-      height:65px;
+      width:65px;height:65px;
       object-fit:cover;
       border-radius:50%;
       border:2px solid #fff;
@@ -47,9 +47,7 @@
       grid-template-columns:repeat(2,1fr); /* HP = 2 kolom */
     }
     @media (min-width:768px){
-      .product-grid{
-        grid-template-columns:repeat(5,1fr); /* Tablet/PC = 5 kolom */
-      }
+      .product-grid{grid-template-columns:repeat(5,1fr);} /* Tablet/PC = 5 kolom */
     }
     .product-card{
       background:#fff;
@@ -120,7 +118,10 @@
 
 <!-- Kategori -->
 <div class="kategori-container">
-  <h2 class="kategori-title">Kategori <a href="#" class="lihat-semua">Lihat Semua &gt;</a></h2>
+  <div class="kategori-title">
+    <h2>Kategori</h2>
+    <a href="#" class="lihat-semua">Lihat Semua &gt;</a>
+  </div>
   <div class="kategori-list" id="categoryList"></div>
 </div>
 
@@ -128,7 +129,7 @@
 <main>
   <section class="product-section">
     <h2>Kamu Mungkin Suka</h2>
-    <div class="product-grid" id="productGrid"></div>
+    <div class="product-grid" id="productGrid"><p>Sedang memuat produk...</p></div>
     <div class="pagination" id="pagination"></div>
   </section>
 </main>
@@ -234,7 +235,7 @@
       card.className = "product-card";
       card.innerHTML = `
         <div class="product-image">
-          <img src="${p.image}" alt="${p.title}">
+          <img src="${p.image}" alt="${p.title}" loading="lazy">
           <span class="badge-cicilan">Cicilan 0%</span>
         </div>
         <div class="product-info">
