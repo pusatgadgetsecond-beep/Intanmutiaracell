@@ -21,21 +21,24 @@
 
     /* Kategori */
     .kategori-container {padding:20px;background:#fff;margin-top:10px;}
-    .kategori-title {display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;}
-    .kategori-title h2{font-size:18px;font-weight:600;margin:0;}
+    .kategori-title {font-size:18px;font-weight:600;margin-bottom:15px;display:flex;justify-content:space-between;align-items:center;}
     .lihat-semua {font-size:14px;color:#e11d48;text-decoration:none;}
     .kategori-list {display:flex;gap:20px;overflow-x:auto;padding-bottom:10px;}
     .kategori-item {flex:0 0 auto;text-align:center;cursor:pointer;}
     .kategori-item img {
-      width:65px;height:65px;
+      width:65px;
+      height:65px;
       object-fit:cover;
       border-radius:50%;
       border:2px solid #fff;
       background:#f3f4f6;
       box-shadow:0 2px 6px rgba(0,0,0,0.15);
-      transition:transform .2s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .kategori-item img:hover {transform:scale(1.08);}
+    .kategori-item img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
     .kategori-item span {display:block;margin-top:6px;font-size:14px;color:#333;}
 
     /* Produk Grid */
@@ -47,7 +50,9 @@
       grid-template-columns:repeat(2,1fr); /* HP = 2 kolom */
     }
     @media (min-width:768px){
-      .product-grid{grid-template-columns:repeat(5,1fr);} /* Tablet/PC = 5 kolom */
+      .product-grid{
+        grid-template-columns:repeat(5,1fr); /* Tablet/PC = 5 kolom */
+      }
     }
     .product-card{
       background:#fff;
@@ -102,7 +107,7 @@
 <body>
 <header>
   <div class="profile">
-    <img src="Intan Mutiara.jpg" alt="Logo Toko">
+    <img src="images/Intanmutiaracell/all.png" alt="Logo Toko">
     <h1>Intan Mutiara Cell</h1>
   </div>
   <div class="search-bar"><input type="text" id="searchInput" placeholder="Cari produk..."></div>
@@ -113,15 +118,12 @@
 </header>
 
 <div class="banner">
-  <img src="Intan Mutiara Cell.jpg" alt="Sampul Toko">
+  <img src="images/Intanmutiaracell/all.png" alt="Sampul Toko">
 </div>
 
 <!-- Kategori -->
 <div class="kategori-container">
-  <div class="kategori-title">
-    <h2>Kategori</h2>
-    <a href="#" class="lihat-semua">Lihat Semua &gt;</a>
-  </div>
+  <h2 class="kategori-title">Kategori <a href="#" class="lihat-semua">Lihat Semua &gt;</a></h2>
   <div class="kategori-list" id="categoryList"></div>
 </div>
 
@@ -129,7 +131,7 @@
 <main>
   <section class="product-section">
     <h2>Kamu Mungkin Suka</h2>
-    <div class="product-grid" id="productGrid"><p>Sedang memuat produk...</p></div>
+    <div class="product-grid" id="productGrid"></div>
     <div class="pagination" id="pagination"></div>
   </section>
 </main>
@@ -165,21 +167,21 @@
   const categoryList = document.getElementById("categoryList");
   const pagination = document.getElementById("pagination");
 
-   const logoMap = {
-    "All": "Intanmutiaracell/all.png",
-    "iPhone": "Intanmutiaracell/iPhone.png",
-    "Oppo": "Intanmutiaracell/oppo.png",
-    "Vivo": "Intanmutiaracell/vivo.png",
-    "Samsung": "Intanmutiaracell/samsung.png",
-    "Xiaomi": "Intanmutiaracell/xiaomi.png",
-    "Realme": "Intanmutiaracell/realme.png",
-    "Infinix": "Intanmutiaracell/infinix.png",
-    "Tecno": "Intanmutiaracell/tecno.png",
-    "iTel": "Intanmutiaracell/itel.png",
-    "Nokia": "Intanmutiaracell/nokia.png",
-    "ZTE": "Intanmutiaracell/zte.png",
-    "Asus": "Intanmutiaracell/asus.png",
-    "Huawei": "Intanmutiaracell/huawei.png",
+  const logoMap = {
+    "All": "images/Intanmutiaracell/all.png",
+    "iPhone": "images/Intanmutiaracell/iPhone.png",
+    "Oppo": "images/Intanmutiaracell/Oppo.png",
+    "Vivo": "images/Intanmutiaracell/Vivo.png",
+    "Samsung": "images/Intanmutiaracell/Samsung.png",
+    "Xiaomi": "images/Intanmutiaracell/Xiaomi.png",
+    "Realme": "images/Intanmutiaracell/Realme.png",
+    "Infinix": "images/Intanmutiaracell/Infinix.png",
+    "Tecno": "images/Intanmutiaracell/Tecno.png",
+    "iTel": "images/Intanmutiaracell/iTel.png",
+    "Nokia": "images/Intanmutiaracell/Nokia.png",
+    "ZTE": "images/Intanmutiaracell/ZTE.png",
+    "Asus": "images/Intanmutiaracell/Asus.png",
+    "Huawei": "images/Intanmutiaracell/Huawei.png"
   };
 
   async function fetchProducts() {
@@ -201,7 +203,7 @@
     categories.forEach(cat => {
       let item = document.createElement("div");
       item.className = "kategori-item";
-      let logo = logoMap[cat] || "logo/default.jpg";
+      let logo = logoMap[cat] || "images/Intanmutiaracell/all.png";
       item.innerHTML = `<img src="${logo}" alt="${cat}"><span>${cat}</span>`;
       item.addEventListener("click", () => {
         currentCategory = cat;
@@ -235,7 +237,7 @@
       card.className = "product-card";
       card.innerHTML = `
         <div class="product-image">
-          <img src="${p.image}" alt="${p.title}" loading="lazy">
+          <img src="${p.image}" alt="${p.title}">
           <span class="badge-cicilan">Cicilan 0%</span>
         </div>
         <div class="product-info">
@@ -264,6 +266,7 @@
       });
       pagination.appendChild(prevBtn);
     }
+
     for (let i = 1; i <= totalPages; i++) {
       if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
         let btn = document.createElement("button");
@@ -284,6 +287,7 @@
         pagination.appendChild(dots);
       }
     }
+
     if (currentPage < totalPages) {
       let nextBtn = document.createElement("button");
       nextBtn.textContent = ">";
