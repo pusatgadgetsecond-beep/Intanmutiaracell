@@ -165,20 +165,20 @@
   const pagination = document.getElementById("pagination");
 
   const logoMap = {
-    "All": "logo/all.png",
-    "iPhone": "logo/iPhone.png",
-    "Oppo": "logo/Oppo.png",
-    "Vivo": "logo/Vivo.png",
-    "Samsung": "logo/Samsung.png",
-    "Xiaomi": "logo/Xiaomi.png",
-    "Realme": "logo/Realme.png",
-    "Infinix": "logo/Infinix.png",
-    "Tecno": "logo/Tecno.png",
-    "iTel": "logo/itel.png",
-    "Nokia": "logo/Nokia.png",
-    "ZTE": "logo/zte.png",
-    "Asus": "logo/asus.png",
-    "Huawei": "logo/huawei.png",
+    "All": "Intanmutiaracell/all.png",
+    "iPhone": "Intanmutiaracell/iPhone.png",
+    "Oppo": "Intanmutiaracell/Oppo.png",
+    "Vivo": "Intanmutiaracell/Vivo.png",
+    "Samsung": "Intanmutiaracell/Samsung.png",
+    "Xiaomi": "Intanmutiaracell/Xiaomi.png",
+    "Realme": "Intanmutiaracell/Realme.png",
+    "Infinix": "Intanmutiaracell/Infinix.png",
+    "Tecno": "Intanmutiaracell/Tecno.png",
+    "iTel": "Intanmutiaracell/itel.png",
+    "Nokia": "Intanmutiaracell/Nokia.png",
+    "ZTE": "Intanmutiaracell/zte.png",
+    "Asus": "Intanmutiaracell/asus.png",
+    "Huawei": "Intanmutiaracell/huawei.png",
   };
 
   async function fetchProducts() {
