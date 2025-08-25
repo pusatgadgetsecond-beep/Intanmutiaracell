@@ -156,161 +156,145 @@
 </footer>
 
 <script>
-  const apiURL = "https://script.google.com/macros/s/AKfycbwbJTJV39rv9w3vXetCj7r3yU04uA0txdMrtAyY5ieqEGxHKmQH0KxpOh3SfdBuxKwcsw/exec"; 
-  let currentCategory = "All";
-  let products = [];
-  let currentPage = 1;
-  let perPage = window.innerWidth < 768 ? 16 : 40;
+  const apiURL = "https://script.google.com/macros/s/AKfycbwbJTJV39rv9w3vXetCj7r3yU04uA0txdMrtAyY5ieqEGxHKmQH0KxpOh3SfdBuxKwcsw/exec";
+let currentCategory = "All";
+let products = [];
+let currentPage = 1;
+let perPage = window.innerWidth < 768 ? 16 : 40;
 
-  const productGrid = document.getElementById("productGrid");
-  const searchInput = document.getElementById("searchInput");
-  const categoryList = document.getElementById("categoryList");
-  const pagination = document.getElementById("pagination");
+const productGrid = document.getElementById("productGrid");
+const searchInput = document.getElementById("searchInput");
+const categoryList = document.getElementById("categoryList");
+const pagination = document.getElementById("pagination");
 
-  const logoMap = {
-    "All": "logo/All.png",
-    "iPhone": "logo/iPhone.png",
-    "Oppo": "logo/Oppo.png",
-    "Vivo": "logo/Vivo.png",
-    "Samsung": "logo/Samsung.png",
-    "Xiaomi": "logo/Xiaomi.png",
-    "Realme": "logo/Realme.png",
-    "Infinix": "logo/Infinix.png",
-    "Tecno": "logo/Tecno.png",
-    "iTel": "logo/iTel.png",
-    "Nokia": "logo/Nokia.png",
-    "ZTE": "logo/ZTE.png",
-    "Asus": "logo/Asus.png",
-    "Huawei": "logo/Huawei.png",
-  };
+const logoMap = {
+  "All": "images/Intanmutiaracell/all.png",
+  "iPhone": "images/Intanmutiaracell/iPhone.png",
+  "Oppo": "images/Intanmutiaracell/Oppo.png",
+  "Vivo": "images/Intanmutiaracell/Vivo.png",
+  "Samsung": "images/Intanmutiaracell/Samsung.png",
+  "Xiaomi": "images/Intanmutiaracell/Xiaomi.png",
+  "Realme": "images/Intanmutiaracell/Realme.png",
+  "Infinix": "images/Intanmutiaracell/Infinix.png",
+  "Tecno": "images/Intanmutiaracell/Tecno.png",
+  "iTel": "images/Intanmutiaracell/iTel.png",
+  "Nokia": "images/Intanmutiaracell/Nokia.png",
+  "ZTE": "images/Intanmutiaracell/ZTE.png",
+  "Asus": "images/Intanmutiaracell/Asus.png",
+  "Huawei": "images/Intanmutiaracell/Huawei.png",
+};
 
-  async function fetchProducts() {
-    try {
-      const res = await fetch(apiURL);
-      const data = await res.json();
-      products = data;
-      generateCategories();
-      renderProducts();
-    } catch (err) {
-      productGrid.innerHTML = "<p>Gagal memuat produk. Periksa koneksi atau API!</p>";
-      console.error(err);
-    }
+async function fetchProducts() {
+  try {
+    const res = await fetch(apiURL);
+    if (!res.ok) throw new Error("Network response was not ok");
+    products = await res.json();
+    generateCategories();
+    renderProducts();
+  } catch (err) {
+    productGrid.innerHTML = "<p>Gagal memuat produk. Periksa koneksi atau API!</p>";
+    console.error(err);
   }
+}
 
-  function generateCategories() {
-    categoryList.innerHTML = "";
-    const categories = ["All", ...new Set(products.map(p => p.category))];
-    categories.forEach(cat => {
-      let item = document.createElement("div");
-      item.className = "kategori-item";
-      let logo = logoMap[cat] || "images/Intanmutiaracell/all.png";
-      item.innerHTML = `<img src="${logo}" alt="${cat}"><span>${cat}</span>`;
-      item.addEventListener("click", () => {
-        currentCategory = cat;
-        currentPage = 1;
-        renderProducts(searchInput.value);
-      });
-      categoryList.appendChild(item);
+function generateCategories() {
+  categoryList.innerHTML = "";
+  const categories = ["All", ...new Set(products.map(p => p.category))];
+  categories.forEach(cat => {
+    const item = document.createElement("div");
+    item.className = "kategori-item";
+    const logo = logoMap[cat] || logoMap["All"];
+    item.innerHTML = `<img src="${logo}" alt="${cat}" loading="lazy"><span>${cat}</span>`;
+    item.addEventListener("click", () => {
+      currentCategory = cat;
+      currentPage = 1;
+      renderProducts(searchInput.value);
     });
-  }
+    categoryList.appendChild(item);
+  });
+}
 
-  function renderProducts(keyword = "") {
-    productGrid.innerHTML = "";
-    let filtered = products.filter(p =>
-      p.title.toLowerCase().includes(keyword.toLowerCase()) &&
-      (currentCategory === "All" || p.category === currentCategory)
-    );
+function renderProducts(keyword = "") {
+  productGrid.innerHTML = "";
+  let filtered = products.filter(p =>
+    p.title.toLowerCase().includes(keyword.toLowerCase()) &&
+    (currentCategory === "All" || p.category === currentCategory)
+  );
 
-    if (filtered.length === 0) {
-      productGrid.innerHTML = "<p>Produk tidak ditemukan.</p>";
-      pagination.innerHTML = "";
-      return;
-    }
-
-    let totalPages = Math.ceil(filtered.length / perPage);
-    let start = (currentPage - 1) * perPage;
-    let end = start + perPage;
-    let paginated = filtered.slice(start, end);
-
-    paginated.forEach(p => {
-      let card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        <div class="product-image">
-          <img src="${p.image}" alt="${p.title}">
-          <span class="badge-cicilan">Cicilan 0%</span>
-        </div>
-        <div class="product-info">
-          <div class="product-title">${p.title}</div>
-          <div>
-            <span class="product-price">${p.price}</span>
-            ${p.discount ? `<span class="product-discount">${p.discount}</span>` : ""}
-          </div>
-          <div class="product-meta">⭐ ${p.rating || "4.8"} | Terjual ${p.sold || "100+"}</div>
-          <div class="buy-links">
-            <a href="${p.shopee}" target="_blank" class="shopee">Shopee</a>
-            <a href="${p.tokopedia}" target="_blank" class="tokopedia">Tokopedia</a>
-          </div>
-        </div>
-      `;
-      productGrid.appendChild(card);
-    });
-
+  if (!filtered.length) {
+    productGrid.innerHTML = "<p>Produk tidak ditemukan.</p>";
     pagination.innerHTML = "";
-    if (currentPage > 1) {
-      let prevBtn = document.createElement("button");
-      prevBtn.textContent = "<";
-      prevBtn.addEventListener("click", () => {
-        currentPage--;
-        renderProducts(searchInput.value);
-      });
-      pagination.appendChild(prevBtn);
-    }
+    return;
+  }
 
-    for (let i = 1; i <= totalPages; i++) {
-      if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
-        let btn = document.createElement("button");
-        btn.textContent = i;
-        if (i === currentPage) btn.classList.add("active");
-        btn.addEventListener("click", () => {
-          currentPage = i;
-          renderProducts(searchInput.value);
-        });
-        pagination.appendChild(btn);
-      } else if (
-        (i === currentPage - 3 && currentPage > 4) ||
-        (i === currentPage + 3 && currentPage < totalPages - 3)
-      ) {
-        let dots = document.createElement("span");
-        dots.textContent = "...";
-        dots.style.padding = "6px 10px";
-        pagination.appendChild(dots);
-      }
-    }
+  const totalPages = Math.ceil(filtered.length / perPage);
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const paginated = filtered.slice(start, end);
 
-    if (currentPage < totalPages) {
-      let nextBtn = document.createElement("button");
-      nextBtn.textContent = ">";
-      nextBtn.addEventListener("click", () => {
-        currentPage++;
-        renderProducts(searchInput.value);
-      });
-      pagination.appendChild(nextBtn);
+  paginated.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <div class="product-image">
+        <img src="${p.image}" alt="${p.title}" loading="lazy">
+        <span class="badge-cicilan">Cicilan 0%</span>
+      </div>
+      <div class="product-info">
+        <div class="product-title">${p.title}</div>
+        <div>
+          <span class="product-price">${p.price}</span>
+          ${p.discount ? `<span class="product-discount">${p.discount}</span>` : ""}
+        </div>
+        <div class="product-meta">⭐ ${p.rating || "4.8"} | Terjual ${p.sold || "100+"}</div>
+        <div class="buy-links">
+          <a href="${p.shopee}" target="_blank" class="shopee">Shopee</a>
+          <a href="${p.tokopedia}" target="_blank" class="tokopedia">Tokopedia</a>
+        </div>
+      </div>`;
+    productGrid.appendChild(card);
+  });
+
+  renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+  pagination.innerHTML = "";
+
+  if (currentPage > 1) {
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "<";
+    prevBtn.addEventListener("click", () => { currentPage--; renderProducts(searchInput.value); });
+    pagination.appendChild(prevBtn);
+  }
+
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add("active");
+      btn.addEventListener("click", () => { currentPage = i; renderProducts(searchInput.value); });
+      pagination.appendChild(btn);
+    } else if (
+      (i === currentPage - 3 && currentPage > 4) ||
+      (i === currentPage + 3 && currentPage < totalPages - 3)
+    ) {
+      const dots = document.createElement("span");
+      dots.textContent = "...";
+      dots.style.padding = "6px 10px";
+      pagination.appendChild(dots);
     }
   }
 
-  searchInput.addEventListener("input", () => {
-    currentPage = 1;
-    renderProducts(searchInput.value);
-  });
+  if (currentPage < totalPages) {
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = ">";
+    nextBtn.addEventListener("click", () => { currentPage++; renderProducts(searchInput.value); });
+    pagination.appendChild(nextBtn);
+  }
+}
 
-  window.addEventListener("resize", () => {
-    perPage = window.innerWidth < 768 ? 16 : 40;
-    currentPage = 1;
-    renderProducts(searchInput.value);
-  });
+searchInput.addEventListener("input", () => { currentPage = 1; renderProducts(searchInput.value); });
+window.addEventListener("resize", () => { perPage = window.innerWidth < 768 ? 16 : 40; currentPage = 1; renderProducts(searchInput.value); });
 
-  fetchProducts();
-</script>
-</body>
-</html>
+fetchProducts();
