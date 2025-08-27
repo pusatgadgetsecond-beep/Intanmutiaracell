@@ -13,8 +13,8 @@
     .search-bar{flex:1;min-width:180px;margin:10px;}
     .search-bar input{width:100%;padding:10px;border-radius:8px;border:none;font-size:1rem;}
     .market-links a{margin-left:10px;text-decoration:none;padding:8px 12px;border-radius:8px;color:#fff;font-weight:600;}
-    .market-links .shopee{background:#f97316;}
-    .market-links .tokopedia{background:#16a34a;}
+    .market-links .instagram {background:#e1306c;} /* pink khas Instagram */
+    .market-links .tiktok {background:#010101;}     /* hitam khas TikTok */
 
     .banner{width:100%;height:220px;overflow:hidden;}
     .banner img{width:100%;height:100%;object-fit:cover;}
@@ -112,9 +112,9 @@
   </div>
   <div class="search-bar"><input type="text" id="searchInput" placeholder="Cari produk..."></div>
   <div class="market-links">
-    <a href="https://shopee.co.id/intanmutiaracell" target="_blank" class="shopee">Shopee</a>
-    <a href="https://www.tokopedia.com/intan-mutiara-store" target="_blank" class="tokopedia">Tokopedia</a>
-  </div>
+  <a href="https://www.instagram.com/intanmutiaracell/" target="_blank" class="instagram">Instagram</a>
+  <a href="https://www.tiktok.com/@intanmutiaracell" target="_blank" class="tiktok">TikTok</a>
+</div>
 </header>
 
 <div class="banner">
