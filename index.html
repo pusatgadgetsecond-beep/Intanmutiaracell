@@ -7,17 +7,14 @@
   <style>
     :root{
       --shopee:#ee4d2d;
-      --neutral-1:#fff;
-      --neutral-2:#f6f6f6;
-      --neutral-3:#f0f0f0;
-      --text-1:#111;
-      --text-2:#666;
-      --text-3:#999;
+      --text:#222;
+      --gray:#777;
       --border:#e5e5e5;
+      --bg:#f6f6f6;
       --radius:12px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--neutral-2);color:var(--text-1)}
+    body{margin:0;font-family:"Poppins",Arial,sans-serif;background:var(--bg);color:var(--text)}
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
 
@@ -27,77 +24,76 @@
       background:var(--shopee);padding:10px 12px;
       display:flex;gap:10px;align-items:center;
     }
-    .topbar__back{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.2)}
     .topbar__search{flex:1}
     .topbar__search input{
       width:100%;height:36px;border:none;border-radius:999px;
       padding:0 14px;font-size:.95rem;outline:none
     }
-    .topbar__more{width:24px;height:24px}
 
     /* ================= STORE HEADER ================= */
     .store-hero{
       position:relative;
       padding:40px 12px 20px;
-      background:url('Intan-Mutiara-Cell.jpg') center/cover no-repeat;
+      background:url('Sampul-Toko.jpg') center/cover no-repeat;
       color:#fff;
     }
     .store-hero::before{
-      content:"";position:absolute;inset:0;
-      background:rgba(0,0,0,.35);
+      content:"";position:absolute;inset:0;background:rgba(0,0,0,.4);
     }
     .store-card{
       position:relative;z-index:1;
-      background:rgba(255,255,255,.2);
-      border-radius:16px;padding:12px;
-      display:flex;align-items:center;gap:12px;
+      background:rgba(255,255,255,.15);border-radius:16px;
+      padding:12px;display:flex;align-items:center;gap:12px;
       backdrop-filter:blur(6px);
-      color:#fff;
     }
-    .store-card__logo{width:56px;height:56px;border-radius:50%;overflow:hidden;flex:0 0 56px}
-    .store-card__name{font-weight:700;font-size:1.02rem}
+    .store-card__logo{width:60px;height:60px;border-radius:50%;overflow:hidden;flex:0 0 60px}
+    .store-card__name{font-weight:700;font-size:1.05rem}
     .store-card__stat{font-size:.85rem;color:#eee}
-    .btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.2);color:#fff;font-weight:600;cursor:pointer}
-    .btn:active{transform:translateY(1px)}
+    .btn{padding:8px 12px;border-radius:8px;border:none;font-weight:600;cursor:pointer}
+    .btn-follow{background:#fff;color:var(--shopee)}
+    .btn-chat{background:transparent;color:#fff;border:1px solid #fff}
 
     /* ================= TABS ================= */
-    .tabs-wrap{background:var(--neutral-2)}
-    .tabs{
-      background:#fff;border-radius:16px 16px 0 0;
-      display:flex;gap:8px;padding:0 12px;border-bottom:1.5px solid var(--border)
-    }
-    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;font-weight:600;position:relative}
+    .tabs{background:#fff;display:flex;justify-content:center;gap:24px;border-bottom:1.5px solid var(--border)}
+    .tab{padding:14px 6px;font-weight:600;position:relative;cursor:pointer}
     .tab.active{color:var(--shopee)}
     .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--shopee)}
 
     /* ================= SECTION ================= */
-    .section{padding:12px;background:#fff;margin-top:8px}
+    .section{padding:14px;background:#fff;margin-top:8px}
     .section__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-    .section__title{font-size:1.02rem;font-weight:700}
+    .section__title{font-size:1rem;font-weight:700}
     .see-all{color:var(--shopee);font-weight:600;font-size:.9rem}
 
-    /* ================= CATEGORY ================= */
-    .kategori-scroller{display:flex;gap:14px;overflow:auto;padding:6px 2px 8px}
-    .kategori-item{flex:0 0 auto;text-align:center;cursor:pointer}
-    .kategori-item img{width:64px;height:64px;border-radius:50%;border:1px solid var(--border)}
-    .kategori-item span{display:block;margin-top:6px;font-size:.85rem;color:#333}
+    /* ================= SCROLLER ================= */
+    .scroller{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px}
+    .scroller::-webkit-scrollbar{display:none}
+    .scroller > *{flex:0 0 auto;scroll-snap-align:start}
 
-    /* ================= PRODUCT GRID ================= */
-    .grid{display:grid;gap:10px}
-    .grid--product{grid-template-columns:repeat(2,1fr)}
-    @media(min-width:640px){.grid--product{grid-template-columns:repeat(4,1fr)}}
-    @media(min-width:1024px){.grid--product{grid-template-columns:repeat(5,1fr)}}
-    .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+    /* ================= PRODUCT CARD ================= */
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;width:150px;flex-shrink:0}
     .card__img{position:relative}
     .card__img img{width:100%;aspect-ratio:1/1;object-fit:cover}
     .badge{position:absolute;left:8px;top:8px;background:var(--shopee);color:#fff;border-radius:4px;font-size:.72rem;padding:2px 6px;font-weight:700}
-    .card__body{padding:8px 10px;flex:1;display:flex;flex-direction:column;gap:6px}
-    .card__title{font-size:.9rem;line-height:1.25em;height:2.5em;overflow:hidden}
-    .price{color:var(--shopee);font-weight:800;font-size:1rem}
-    .price del{color:#aaa;margin-left:6px;font-weight:500;font-size:.8rem}
-    .meta{display:flex;gap:8px;font-size:.8rem;color:#777}
-    .chip{display:inline-flex;gap:4px;align-items:center;padding:2px 6px;border:1px solid var(--border);border-radius:6px}
+    .card__body{padding:8px 10px;display:flex;flex-direction:column;gap:6px}
+    .card__title{font-size:.85rem;line-height:1.25em;height:2.4em;overflow:hidden}
+    .price{color:var(--shopee);font-weight:800;font-size:.95rem}
+    .price del{color:#aaa;margin-left:6px;font-size:.75rem}
+    .meta{display:flex;gap:8px;font-size:.75rem;color:#777}
+    .chip{display:inline-flex;gap:4px;align-items:center}
     .chip .star::before{content:"★";color:#ffb400}
+
+    /* ================= GRID ================= */
+    .grid{display:grid;gap:10px}
+    .grid--2{grid-template-columns:repeat(2,1fr)}
+    .grid--3{grid-template-columns:repeat(3,1fr)}
+    .grid--4{grid-template-columns:repeat(4,1fr)}
+    @media(min-width:768px){.grid--2{grid-template-columns:repeat(4,1fr)}.grid--3,.grid--4{grid-template-columns:repeat(6,1fr)}}
+
+    /* ================= CATEGORY ================= */
+    .kategori-item{text-align:center;width:80px;flex-shrink:0}
+    .kategori-item img{width:64px;height:64px;border-radius:50%;border:1px solid var(--border)}
+    .kategori-item span{display:block;margin-top:6px;font-size:.8rem;color:#333}
 
     /* ================= FOOTER ================= */
     footer{background:#fff;border-top:1px solid var(--border);padding:18px;text-align:center;color:#666;margin-top:20px}
@@ -106,33 +102,29 @@
 <body>
   <!-- TOPBAR -->
   <div class="topbar">
-    <div class="topbar__back"></div>
     <div class="topbar__search"><input id="searchInput" placeholder="Cari di Toko"></div>
-    <div class="topbar__more"></div>
   </div>
 
   <!-- STORE HEADER -->
   <div class="store-hero">
     <div class="store-card">
-      <div class="store-card__logo"><img src="Intan-Mutiara.jpg" alt="Logo Toko"></div>
+      <div class="store-card__logo"><img src="Logo-Toko.png" alt="Logo Toko"></div>
       <div class="store-card__meta">
         <div class="store-card__name">INTAN MUTIARA CELL</div>
         <div class="store-card__stat">⭐ 4.8 | 115,2RB Pengikut</div>
       </div>
       <div class="store-card__actions">
-        <button class="btn">Mengikuti</button>
-        <button class="btn">Chat</button>
+        <button class="btn btn-follow">Mengikuti</button>
+        <button class="btn btn-chat">Chat</button>
       </div>
     </div>
   </div>
 
   <!-- TABS -->
-  <div class="tabs-wrap">
-    <div class="tabs">
-      <div class="tab active" data-tab="toko">Toko</div>
-      <div class="tab" data-tab="produk">Produk</div>
-      <div class="tab" data-tab="kategori">Kategori</div>
-    </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="toko">Toko</div>
+    <div class="tab" data-tab="produk">Produk</div>
+    <div class="tab" data-tab="kategori">Kategori</div>
   </div>
 
   <!-- CONTENT -->
@@ -187,35 +179,35 @@
         content.innerHTML=`
           <section class="section">
             <div class="section__head"><div class="section__title">Kamu Mungkin Suka</div><a class="see-all">Lihat Semua ></a></div>
-            <div class="grid grid--product">${products.slice().sort(()=>Math.random()-0.5).slice(0,15).map(createProductCard).join("")}</div>
+            <div class="scroller">${products.sort(()=>Math.random()-0.5).slice(0,15).map(createProductCard).join("")}</div>
           </section>
-          <section class="section"><img src="Intan-Mutiara-Cell.jpg" alt="Sampul"></section>
+          <section class="section"><img src="Banner.jpg" alt="Sampul"></section>
           <section class="section">
             <div class="section__head"><div class="section__title">Penawaran Terbaik</div><a class="see-all">Lihat Semua ></a></div>
-            <div class="grid grid--product">${products.slice(0,15).map(createProductCard).join("")}</div>
+            <div class="scroller">${products.slice(0,15).map(createProductCard).join("")}</div>
           </section>
           <section class="section">
             <div class="section__head"><div class="section__title">Produk Baru</div></div>
-            <div class="grid grid--product">${products.slice(0,4).map(createProductCard).join("")}</div>
+            <div class="grid grid--2">${products.slice(0,4).map(createProductCard).join("")}</div>
           </section>
           <section class="section">
             <div class="section__head"><div class="section__title">Kategori</div><a class="see-all">Lihat Semua ></a></div>
-            <div class="kategori-scroller">${[...new Set(products.map(p=>p.category))].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div>
+            <div class="scroller">${[...new Set(products.map(p=>p.category))].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div>
           </section>
           <section class="section">
             <div class="section__head"><div class="section__title">Penjualan Tertinggi</div></div>
-            <div class="grid grid--product">${products.slice(0,6).map(createProductCard).join("")}</div>
+            <div class="grid grid--3">${products.slice(0,6).map(createProductCard).join("")}</div>
           </section>
           <section class="section">
             <div class="section__head"><div class="section__title">Rekomendasi Toko</div></div>
-            <div class="grid grid--product">${products.slice(6,12).map(createProductCard).join("")}</div>
+            <div class="grid grid--3">${products.slice(6,12).map(createProductCard).join("")}</div>
           </section>`;
       }
       if(tab==="produk"){
-        content.innerHTML=`<section class="section"><div class="section__head"><div class="section__title">Semua Produk</div></div><div class="grid grid--product">${products.map(createProductCard).join("")}</div></section>`;
+        content.innerHTML=`<section class="section"><div class="section__head"><div class="section__title">Semua Produk</div></div><div class="grid grid--2">${products.map(createProductCard).join("")}</div></section>`;
       }
       if(tab==="kategori"){
-        content.innerHTML=`<section class="section"><div class="section__head"><div class="section__title">Semua Kategori</div></div><div class="kategori-scroller">${[...new Set(products.map(p=>p.category))].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div></section>`;
+        content.innerHTML=`<section class="section"><div class="section__head"><div class="section__title">Semua Kategori</div></div><div class="scroller">${[...new Set(products.map(p=>p.category))].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div></section>`;
       }
     }
 
