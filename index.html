@@ -18,34 +18,15 @@
     img{max-width:100%;display:block}
     a{text-decoration:none;color:inherit}
 
-    /* ================= TOPBAR ================= */
-    .topbar{
-      position:sticky;top:0;z-index:1000;
-      background:var(--shopee);padding:10px 12px;
-      display:flex;gap:10px;align-items:center;
-    }
+    /* TOPBAR */
+    .topbar{position:sticky;top:0;z-index:1000;background:var(--shopee);padding:10px 12px;display:flex;gap:10px;align-items:center}
     .topbar__search{flex:1}
-    .topbar__search input{
-      width:100%;height:36px;border:none;border-radius:999px;
-      padding:0 14px;font-size:.95rem;outline:none
-    }
+    .topbar__search input{width:100%;height:36px;border:none;border-radius:999px;padding:0 14px;font-size:.95rem;outline:none}
 
-    /* ================= STORE HEADER ================= */
-    .store-hero{
-      position:relative;
-      padding:40px 12px 20px;
-      background:url('Sampul-Toko.jpg') center/cover no-repeat;
-      color:#fff;
-    }
-    .store-hero::before{
-      content:"";position:absolute;inset:0;background:rgba(0,0,0,.4);
-    }
-    .store-card{
-      position:relative;z-index:1;
-      background:rgba(255,255,255,.15);border-radius:16px;
-      padding:12px;display:flex;align-items:center;gap:12px;
-      backdrop-filter:blur(6px);
-    }
+    /* STORE HEADER */
+    .store-hero{position:relative;padding:40px 12px 20px;background:url('Intan Mutiara Cell.jpg') center/cover no-repeat;color:#fff}
+    .store-hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4)}
+    .store-card{position:relative;z-index:1;background:rgba(255,255,255,.15);border-radius:16px;padding:12px;display:flex;align-items:center;gap:12px;backdrop-filter:blur(6px)}
     .store-card__logo{width:60px;height:60px;border-radius:50%;overflow:hidden;flex:0 0 60px}
     .store-card__name{font-weight:700;font-size:1.05rem}
     .store-card__stat{font-size:.85rem;color:#eee}
@@ -53,24 +34,24 @@
     .btn-follow{background:#fff;color:var(--shopee)}
     .btn-chat{background:transparent;color:#fff;border:1px solid #fff}
 
-    /* ================= TABS ================= */
+    /* TABS */
     .tabs{background:#fff;display:flex;justify-content:center;gap:24px;border-bottom:1.5px solid var(--border)}
     .tab{padding:14px 6px;font-weight:600;position:relative;cursor:pointer}
     .tab.active{color:var(--shopee)}
     .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--shopee)}
 
-    /* ================= SECTION ================= */
+    /* SECTION */
     .section{padding:14px;background:#fff;margin-top:8px}
     .section__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
     .section__title{font-size:1rem;font-weight:700}
     .see-all{color:var(--shopee);font-weight:600;font-size:.9rem}
 
-    /* ================= SCROLLER ================= */
+    /* SCROLLER */
     .scroller{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px}
     .scroller::-webkit-scrollbar{display:none}
     .scroller > *{flex:0 0 auto;scroll-snap-align:start}
 
-    /* ================= PRODUCT CARD ================= */
+    /* PRODUCT CARD */
     .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;width:150px;flex-shrink:0}
     .card__img{position:relative}
     .card__img img{width:100%;aspect-ratio:1/1;object-fit:cover}
@@ -83,20 +64,31 @@
     .chip{display:inline-flex;gap:4px;align-items:center}
     .chip .star::before{content:"★";color:#ffb400}
 
-    /* ================= GRID ================= */
+    /* GRID */
     .grid{display:grid;gap:10px}
     .grid--2{grid-template-columns:repeat(2,1fr)}
     .grid--3{grid-template-columns:repeat(3,1fr)}
-    .grid--4{grid-template-columns:repeat(4,1fr)}
-    @media(min-width:768px){.grid--2{grid-template-columns:repeat(4,1fr)}.grid--3,.grid--4{grid-template-columns:repeat(6,1fr)}}
+    @media(min-width:768px){.grid--2{grid-template-columns:repeat(4,1fr)}.grid--3{grid-template-columns:repeat(3,1fr)}}
 
-    /* ================= CATEGORY ================= */
+    /* CATEGORY */
     .kategori-item{text-align:center;width:80px;flex-shrink:0}
     .kategori-item img{width:64px;height:64px;border-radius:50%;border:1px solid var(--border)}
     .kategori-item span{display:block;margin-top:6px;font-size:.8rem;color:#333}
 
-    /* ================= FOOTER ================= */
+    /* FOOTER */
     footer{background:#fff;border-top:1px solid var(--border);padding:18px;text-align:center;color:#666;margin-top:20px}
+
+    /* CHAT MODAL */
+    .chat-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2000}
+    .chat-box{background:#fff;width:90%;max-width:400px;border-radius:12px;display:flex;flex-direction:column;overflow:hidden}
+    .chat-header{background:var(--shopee);color:#fff;padding:10px;font-weight:600}
+    .chat-messages{flex:1;padding:10px;overflow-y:auto;max-height:300px}
+    .chat-input{display:flex;border-top:1px solid var(--border)}
+    .chat-input input{flex:1;border:none;padding:10px;outline:none}
+    .chat-input button{background:var(--shopee);color:#fff;border:none;padding:10px 16px;cursor:pointer}
+    .msg{margin:6px 0;padding:8px 12px;border-radius:8px;max-width:70%}
+    .msg.user{background:var(--shopee);color:#fff;margin-left:auto}
+    .msg.seller{background:#f1f1f1;color:#333;margin-right:auto}
   </style>
 </head>
 <body>
@@ -108,14 +100,14 @@
   <!-- STORE HEADER -->
   <div class="store-hero">
     <div class="store-card">
-      <div class="store-card__logo"><img src="Logo-Toko.png" alt="Logo Toko"></div>
+      <div class="store-card__logo"><img src="Intan Mutiara.jpg" alt="Logo Toko"></div>
       <div class="store-card__meta">
         <div class="store-card__name">INTAN MUTIARA CELL</div>
         <div class="store-card__stat">⭐ 4.8 | 115,2RB Pengikut</div>
       </div>
       <div class="store-card__actions">
-        <button class="btn btn-follow">Mengikuti</button>
-        <button class="btn btn-chat">Chat</button>
+        <a href="https://instagram.com/intanmutiaracell" target="_blank" class="btn btn-follow">Follow IG</a>
+        <button class="btn btn-chat" id="chatBtn">Chat</button>
       </div>
     </div>
   </div>
@@ -135,13 +127,49 @@
     Intan Mutiara, Jl. Pemuda No.27-31, Embong Kaliasin, Genteng, Surabaya • WA: 0896-5342-9419
   </footer>
 
+  <!-- CHAT MODAL -->
+  <div class="chat-modal" id="chatModal">
+    <div class="chat-box">
+      <div class="chat-header">Chat dengan Seller</div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input">
+        <input id="chatInput" placeholder="Tulis pesan...">
+        <button id="sendBtn">Kirim</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const apiURL = "https://script.google.com/macros/s/AKfycbwhEx_j7s685ef89RppbIwjgwVePZyldnx8jC33lchkmirpWtr4Pm1sqhk5L7NjH_M6/exec";
     let products = [];
-
     const content = document.getElementById("content");
     const tabs = document.querySelectorAll(".tab");
 
+    // CHAT
+    const chatModal = document.getElementById("chatModal");
+    const chatBtn = document.getElementById("chatBtn");
+    const chatInput = document.getElementById("chatInput");
+    const chatMessages = document.getElementById("chatMessages");
+    const sendBtn = document.getElementById("sendBtn");
+
+    chatBtn.onclick = ()=> chatModal.style.display="flex";
+    sendBtn.onclick = ()=>{
+      const msg = chatInput.value.trim();
+      if(!msg) return;
+      addMsg(msg,"user");
+      setTimeout(()=>addMsg("Halo, ada yang bisa saya bantu?","seller"),800);
+      chatInput.value="";
+    }
+    function addMsg(text,type){
+      const div=document.createElement("div");
+      div.className="msg "+type;
+      div.textContent=text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop=chatMessages.scrollHeight;
+    }
+    chatModal.onclick=(e)=>{if(e.target===chatModal) chatModal.style.display="none";}
+
+    // DATA
     tabs.forEach(tab=>{
       tab.addEventListener("click",()=>{
         tabs.forEach(t=>t.classList.remove("active"));
