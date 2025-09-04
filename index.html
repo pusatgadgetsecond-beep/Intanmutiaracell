@@ -7,238 +7,218 @@
   <style>
     :root{
       --shopee:#ee4d2d;
-      --text:#222;
-      --gray:#777;
+      --neutral-1:#fff;
+      --neutral-2:#f6f6f6;
+      --neutral-3:#f0f0f0;
+      --text-1:#111;
+      --text-2:#666;
+      --text-3:#999;
       --border:#e5e5e5;
-      --bg:#f6f6f6;
       --radius:12px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:"Poppins",Arial,sans-serif;background:var(--bg);color:var(--text)}
+    html,body{margin:0;padding:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--neutral-2);color:var(--text-1)}
     img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
 
-    /* TOPBAR */
-    .topbar{position:sticky;top:0;z-index:1000;background:var(--shopee);padding:10px 12px;display:flex;gap:10px;align-items:center}
+    /* ================= Header ================= */
+    .topbar{
+      position:sticky;top:0;z-index:1000;
+      background:var(--shopee);padding:10px 12px;
+      display:flex;gap:10px;align-items:center;
+    }
+    .topbar__back,.topbar__more{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.2)}
     .topbar__search{flex:1}
-    .topbar__search input{width:100%;height:36px;border:none;border-radius:999px;padding:0 14px;font-size:.95rem;outline:none}
+    .topbar__search input{
+      width:100%;height:36px;border:none;border-radius:999px;
+      padding:0 14px;font-size:.95rem;outline:none
+    }
 
-    /* STORE HEADER */
-    .store-hero{position:relative;padding:40px 12px 20px;background:url('Intan Mutiara Cell.jpg') center/cover no-repeat;color:#fff}
-    .store-hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4)}
-    .store-card{position:relative;z-index:1;background:rgba(255,255,255,.15);border-radius:16px;padding:12px;display:flex;align-items:center;gap:12px;backdrop-filter:blur(6px)}
-    .store-card__logo{width:60px;height:60px;border-radius:50%;overflow:hidden;flex:0 0 60px}
-    .store-card__name{font-weight:700;font-size:1.05rem}
-    .store-card__stat{font-size:.85rem;color:#eee}
-    .btn{padding:8px 12px;border-radius:8px;border:none;font-weight:600;cursor:pointer}
-    .btn-follow{background:#fff;color:var(--shopee)}
-    .btn-chat{background:transparent;color:#fff;border:1px solid #fff}
+    /* ================= Store header ================= */
+    .store-hero {
+      position: relative;
+      padding: 40px 12px 20px;
+      background: url('Intan Mutiara Cell.jpg') center/cover no-repeat;
+    }
+    .store-hero::before {
+      content: "";
+      position: absolute;inset: 0;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(3px);
+    }
+    .store-card{
+      position: relative;
+      border-radius:16px;
+      padding:12px;
+      display:flex;align-items:center;gap:12px;
+      z-index:1;
+      background:transparent;
+    }
+    .store-card__logo{
+      width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #fff;flex:0 0 56px
+    }
+    .store-card__meta{flex:1;min-width:0}
+    .store-card__name{font-weight:700;font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+    .store-card__stat{color:#f0f0f0;font-size:.85rem;margin-top:2px}
+    .store-card__actions{display:flex;gap:8px}
+    .btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.08);font-weight:600;font-size:.9rem;cursor:pointer;white-space:nowrap}
+    .btn--follow,.btn--chat{background:#fff;color:var(--text-1)}
+    .btn:active{transform:translateY(1px)}
 
-    /* TABS */
-    .tabs{background:#fff;display:flex;justify-content:center;gap:24px;border-bottom:1.5px solid var(--border)}
-    .tab{padding:14px 6px;font-weight:600;position:relative;cursor:pointer}
+    /* ================= Tabs ================= */
+    .tabs-wrap{background:var(--neutral-2);padding:8px 0}
+    .tabs{background:#fff;border-radius:16px 16px 0 0;display:flex;gap:8px;padding:0 12px;border-bottom:1.5px solid var(--border)}
+    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;color:#555;font-weight:600;position:relative;text-decoration:none}
     .tab.active{color:var(--shopee)}
     .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--shopee)}
 
-    /* SECTION */
-    .section{padding:14px;background:#fff;margin-top:8px}
-    .section__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-    .section__title{font-size:1rem;font-weight:700}
-    .see-all{color:var(--shopee);font-weight:600;font-size:.9rem}
+    /* ================= Section ================= */
+    .section{padding:12px;background:#fff;margin-top:8px}
+    .section__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .section__title{font-size:1.02rem;font-weight:700}
+    .see-all{color:var(--shopee);text-decoration:none;font-weight:600;font-size:.9rem}
 
-    /* SCROLLER */
-    .scroller{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px}
-    .scroller::-webkit-scrollbar{display:none}
-    .scroller > *{flex:0 0 auto;scroll-snap-align:start}
+    /* ================= Category ================= */
+    .kategori-scroller{display:flex;gap:14px;overflow:auto;padding:6px 2px 8px}
+    .kategori-item{flex:0 0 auto;text-align:center;cursor:pointer}
+    .kategori-item img{width:64px;height:64px;border-radius:50%;background:#fafafa;border:1px solid var(--border)}
+    .kategori-item span{display:block;margin-top:6px;font-size:.85rem;color:#333}
 
-    /* PRODUCT CARD */
-    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;width:150px;flex-shrink:0}
-    .card__img{position:relative}
+    /* ================= Product grid ================= */
+    .grid{display:grid;gap:10px}
+    .grid--product{grid-template-columns:repeat(2,1fr)}
+    @media(min-width:640px){.grid--product{grid-template-columns:repeat(4,1fr)}}
+    @media(min-width:1024px){.grid--product{grid-template-columns:repeat(5,1fr)}}
+
+    /* khusus 2 kolom */
+    .grid--2col{grid-template-columns:repeat(2,1fr);gap:12px}
+
+    .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+    .card__img{position:relative;background:#fff}
     .card__img img{width:100%;aspect-ratio:1/1;object-fit:cover}
     .badge{position:absolute;left:8px;top:8px;background:var(--shopee);color:#fff;border-radius:4px;font-size:.72rem;padding:2px 6px;font-weight:700}
-    .card__body{padding:8px 10px;display:flex;flex-direction:column;gap:6px}
-    .card__title{font-size:.85rem;line-height:1.25em;height:2.4em;overflow:hidden}
-    .price{color:var(--shopee);font-weight:800;font-size:.95rem}
-    .price del{color:#aaa;margin-left:6px;font-size:.75rem}
-    .meta{display:flex;gap:8px;font-size:.75rem;color:#777}
-    .chip{display:inline-flex;gap:4px;align-items:center}
-    .chip .star::before{content:"★";color:#ffb400}
+    .card__body{padding:8px 10px;display:flex;flex-direction:column;gap:6px;flex:1}
+    .card__title{font-size:.9rem;line-height:1.25em;height:2.5em;overflow:hidden;color:#333}
+    .price{color:var(--shopee);font-weight:800;font-size:1rem}
+    .price del{color:#aaa;margin-left:6px;font-weight:500;font-size:.8rem}
+    .meta{display:flex;gap:8px;align-items:center;color:#777;font-size:.8rem}
+    .chip{display:inline-flex;gap:4px;align-items:center;padding:2px 6px;border:1px solid var(--border);border-radius:6px;background:#fff}
+    .chip .star::before{content:"★";color:#ffb400;font-size:.9rem;line-height:1}
 
-    /* GRID */
-    .grid{display:grid;gap:10px}
-    .grid--2{grid-template-columns:repeat(2,1fr)}
-    .grid--3{grid-template-columns:repeat(3,1fr)}
-    @media(min-width:768px){.grid--2{grid-template-columns:repeat(4,1fr)}.grid--3{grid-template-columns:repeat(3,1fr)}}
-
-    /* CATEGORY */
-    .kategori-item{text-align:center;width:80px;flex-shrink:0}
-    .kategori-item img{width:64px;height:64px;border-radius:50%;border:1px solid var(--border)}
-    .kategori-item span{display:block;margin-top:6px;font-size:.8rem;color:#333}
-
-    /* FOOTER */
-    footer{background:#fff;border-top:1px solid var(--border);padding:18px;text-align:center;color:#666;margin-top:20px}
-
-    /* CHAT MODAL */
-    .chat-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2000}
-    .chat-box{background:#fff;width:90%;max-width:400px;border-radius:12px;display:flex;flex-direction:column;overflow:hidden}
-    .chat-header{background:var(--shopee);color:#fff;padding:10px;font-weight:600}
-    .chat-messages{flex:1;padding:10px;overflow-y:auto;max-height:300px}
-    .chat-input{display:flex;border-top:1px solid var(--border)}
-    .chat-input input{flex:1;border:none;padding:10px;outline:none}
-    .chat-input button{background:var(--shopee);color:#fff;border:none;padding:10px 16px;cursor:pointer}
-    .msg{margin:6px 0;padding:8px 12px;border-radius:8px;max-width:70%}
-    .msg.user{background:var(--shopee);color:#fff;margin-left:auto}
-    .msg.seller{background:#f1f1f1;color:#333;margin-right:auto}
+    /* ================= Footer ================= */
+    footer{background:#fff;border-top:1px solid var(--border);padding:18px;color:#666;text-align:center}
   </style>
 </head>
 <body>
-  <!-- TOPBAR -->
+
+  <!-- ========== TOP BAR ========== -->
   <div class="topbar">
+    <div class="topbar__back"></div>
     <div class="topbar__search"><input id="searchInput" placeholder="Cari di Toko"></div>
+    <div class="topbar__more"></div>
   </div>
 
-  <!-- STORE HEADER -->
+  <!-- ========== STORE HEADER ========== -->
   <div class="store-hero">
     <div class="store-card">
       <div class="store-card__logo"><img src="Intan Mutiara.jpg" alt="Logo Toko"></div>
       <div class="store-card__meta">
         <div class="store-card__name">INTAN MUTIARA CELL</div>
-        <div class="store-card__stat">⭐ 4.8 | 115,2RB Pengikut</div>
+        <div class="store-card__stat">⭐ 4.8 | 139,3RB Pengikut</div>
       </div>
       <div class="store-card__actions">
-        <a href="https://instagram.com/intanmutiaracell" target="_blank" class="btn btn-follow">Follow IG</a>
-        <button class="btn btn-chat" id="chatBtn">Chat</button>
+        <button class="btn btn--follow">Ikuti</button>
+        <button class="btn btn--chat" onclick="openChat()">Chat</button>
       </div>
     </div>
   </div>
 
-  <!-- TABS -->
-  <div class="tabs">
-    <div class="tab active" data-tab="toko">Toko</div>
-    <div class="tab" data-tab="produk">Produk</div>
-    <div class="tab" data-tab="kategori">Kategori</div>
+  <!-- ========== TABS ========== -->
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <a class="tab active" data-tab="toko" href="#">Toko</a>
+      <a class="tab" data-tab="produk" href="#">Produk</a>
+      <a class="tab" data-tab="kategori" href="#">Kategori</a>
+    </div>
   </div>
 
-  <!-- CONTENT -->
-  <main id="content"></main>
+  <!-- ========== CONTENT ========== -->
+  <main id="tabContent"></main>
 
-  <!-- FOOTER -->
+  <!-- ========== FOOTER ========== -->
   <footer>
-    Intan Mutiara, Jl. Pemuda No.27-31, Embong Kaliasin, Genteng, Surabaya • WA: 0896-5342-9419
+    Intan Mutiara, Jl. Pemuda No.27-31, Surabaya • WA: 0896-5342-9419
   </footer>
-
-  <!-- CHAT MODAL -->
-  <div class="chat-modal" id="chatModal">
-    <div class="chat-box">
-      <div class="chat-header">Chat dengan Seller</div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input">
-        <input id="chatInput" placeholder="Tulis pesan...">
-        <button id="sendBtn">Kirim</button>
-      </div>
-    </div>
-  </div>
 
   <script>
     const apiURL = "https://script.google.com/macros/s/AKfycbwhEx_j7s685ef89RppbIwjgwVePZyldnx8jC33lchkmirpWtr4Pm1sqhk5L7NjH_M6/exec";
-    let products = [];
-    const content = document.getElementById("content");
-    const tabs = document.querySelectorAll(".tab");
+    let products=[];
 
-    // CHAT
-    const chatModal = document.getElementById("chatModal");
-    const chatBtn = document.getElementById("chatBtn");
-    const chatInput = document.getElementById("chatInput");
-    const chatMessages = document.getElementById("chatMessages");
-    const sendBtn = document.getElementById("sendBtn");
-
-    chatBtn.onclick = ()=> chatModal.style.display="flex";
-    sendBtn.onclick = ()=>{
-      const msg = chatInput.value.trim();
-      if(!msg) return;
-      addMsg(msg,"user");
-      setTimeout(()=>addMsg("Halo, ada yang bisa saya bantu?","seller"),800);
-      chatInput.value="";
+    function createProductCard(p){
+      const v=p.variants?.[0];
+      const img=p.images?.[0]||'https://via.placeholder.com/300?text=No+Image';
+      const price=v?Number(v.price).toLocaleString("id-ID"):"-";
+      return `
+        <div class="card">
+          <div class="card__img"><img src="${img}" alt="${p.title}"><span class="badge">Diskon 99%</span></div>
+          <div class="card__body">
+            <div class="card__title">${p.title}</div>
+            <div class="price">Rp ${price}</div>
+            <div class="meta">
+              <span class="chip"><i class="star"></i> ${p.rating||"4.8"}</span>
+              <span class="sold">Terjual ${p.sold||"100+"}</span>
+            </div>
+          </div>
+        </div>`;
     }
-    function addMsg(text,type){
-      const div=document.createElement("div");
-      div.className="msg "+type;
-      div.textContent=text;
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop=chatMessages.scrollHeight;
-    }
-    chatModal.onclick=(e)=>{if(e.target===chatModal) chatModal.style.display="none";}
 
-    // DATA
-    tabs.forEach(tab=>{
-      tab.addEventListener("click",()=>{
-        tabs.forEach(t=>t.classList.remove("active"));
+    async function fetchProducts(){
+      const res=await fetch(apiURL);
+      products=await res.json();
+      renderToko();
+    }
+
+    function renderToko(){
+      const tab=document.getElementById("tabContent");
+      tab.innerHTML=`
+        <section class="section"><div class="section__head"><div class="section__title">Kamu Mungkin Suka</div><a class="see-all" href="#">Selengkapnya ></a></div>
+          <div class="grid grid--product">${products.slice(0,15).map(createProductCard).join("")}</div></section>
+        <section class="section"><img src="Intan Mutiara Cell.jpg" style="width:100%;border-radius:12px"></section>
+        <section class="section"><div class="section__head"><div class="section__title">Penawaran Terbaik</div><a class="see-all" href="#">Selengkapnya ></a></div>
+          <div class="grid grid--product">${products.slice(15,30).map(createProductCard).join("")}</div></section>
+        <section class="section"><div class="section__head"><div class="section__title">Produk Baru</div></div>
+          <div class="grid grid--product">${products.slice(30,34).map(createProductCard).join("")}</div></section>
+        <section class="section"><div class="section__head"><div class="section__title">Kategori</div></div>
+          <div class="kategori-scroller"><div class="kategori-item"><img src="iPhone.png"><span>iPhone</span></div></div></section>
+        <section class="section"><div class="section__head"><div class="section__title">Penjualan Tertinggi</div></div>
+          <div class="grid grid--2col">${products.slice(34,40).map(createProductCard).join("")}</div></section>
+        <section class="section"><div class="section__head"><div class="section__title">Rekomendasi Toko</div></div>
+          <div class="grid grid--2col">${products.slice(40,46).map(createProductCard).join("")}</div></section>`;
+    }
+
+    function renderProduk(){
+      document.getElementById("tabContent").innerHTML=
+        `<section class="section"><div class="section__head"><div class="section__title">Semua Produk</div></div>
+        <div class="grid grid--product">${products.map(createProductCard).join("")}</div></section>`;
+    }
+
+    function renderKategori(){
+      document.getElementById("tabContent").innerHTML=
+        `<section class="section"><div class="section__head"><div class="section__title">Semua Kategori</div></div>
+        <div class="kategori-scroller">${["iPhone","Oppo","Vivo","Samsung","Xiaomi"].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div></section>`;
+    }
+
+    document.querySelectorAll(".tab").forEach(tab=>{
+      tab.addEventListener("click",e=>{
+        e.preventDefault();
+        document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
         tab.classList.add("active");
-        render(tab.dataset.tab);
+        if(tab.dataset.tab==="toko") renderToko();
+        if(tab.dataset.tab==="produk") renderProduk();
+        if(tab.dataset.tab==="kategori") renderKategori();
       });
     });
 
-    async function fetchProducts(){
-      const res = await fetch(apiURL);
-      products = await res.json();
-      render("toko");
-    }
-
-    function createProductCard(p){
-      const v = p.variants?.[0];
-      const price = v ? Number(v.price).toLocaleString("id-ID") : "-";
-      const cut = v?.diskon ? `<del>Rp ${Number(v.diskon).toLocaleString("id-ID")}</del>` : "";
-      return `
-      <div class="card">
-        <div class="card__img">
-          <img src="${p.images?.[0] || 'https://via.placeholder.com/300'}" alt="${p.title}">
-          <span class="badge">PROMO</span>
-        </div>
-        <div class="card__body">
-          <div class="card__title">${p.title}</div>
-          <div class="price">Rp ${price} ${cut}</div>
-          <div class="meta"><span class="chip"><span class="star"></span> ${p.rating||"4.8"}</span><span>Terjual ${p.sold||"100+"}</span></div>
-        </div>
-      </div>`;
-    }
-
-    function render(tab){
-      if(tab==="toko"){
-        content.innerHTML=`
-          <section class="section">
-            <div class="section__head"><div class="section__title">Kamu Mungkin Suka</div><a class="see-all">Lihat Semua ></a></div>
-            <div class="scroller">${products.sort(()=>Math.random()-0.5).slice(0,15).map(createProductCard).join("")}</div>
-          </section>
-          <section class="section"><img src="Banner.jpg" alt="Sampul"></section>
-          <section class="section">
-            <div class="section__head"><div class="section__title">Penawaran Terbaik</div><a class="see-all">Lihat Semua ></a></div>
-            <div class="scroller">${products.slice(0,15).map(createProductCard).join("")}</div>
-          </section>
-          <section class="section">
-            <div class="section__head"><div class="section__title">Produk Baru</div></div>
-            <div class="grid grid--2">${products.slice(0,4).map(createProductCard).join("")}</div>
-          </section>
-          <section class="section">
-            <div class="section__head"><div class="section__title">Kategori</div><a class="see-all">Lihat Semua ></a></div>
-            <div class="scroller">${[...new Set(products.map(p=>p.category))].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div>
-          </section>
-          <section class="section">
-            <div class="section__head"><div class="section__title">Penjualan Tertinggi</div></div>
-            <div class="grid grid--3">${products.slice(0,6).map(createProductCard).join("")}</div>
-          </section>
-          <section class="section">
-            <div class="section__head"><div class="section__title">Rekomendasi Toko</div></div>
-            <div class="grid grid--3">${products.slice(6,12).map(createProductCard).join("")}</div>
-          </section>`;
-      }
-      if(tab==="produk"){
-        content.innerHTML=`<section class="section"><div class="section__head"><div class="section__title">Semua Produk</div></div><div class="grid grid--2">${products.map(createProductCard).join("")}</div></section>`;
-      }
-      if(tab==="kategori"){
-        content.innerHTML=`<section class="section"><div class="section__head"><div class="section__title">Semua Kategori</div></div><div class="scroller">${[...new Set(products.map(p=>p.category))].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div></section>`;
-      }
-    }
-
+    function openChat(){alert("Fitur chat pembeli & seller akan ditambahkan di sini.")}
     fetchProducts();
   </script>
 </body>
