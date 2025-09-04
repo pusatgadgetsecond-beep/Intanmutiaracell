@@ -6,7 +6,7 @@
   <title>Intan Mutiara Cell - Marketplace</title>
   <style>
     :root{
-      --shopee: #ee4d2d;
+      --shopee:#ee4d2d;
       --neutral-1:#fff;
       --neutral-2:#f6f6f6;
       --neutral-3:#f0f0f0;
@@ -19,8 +19,9 @@
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--neutral-2);color:var(--text-1)}
     img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
 
-    /* ================= Header (mirip Shopee) ================= */
+    /* ================= TOPBAR ================= */
     .topbar{
       position:sticky;top:0;z-index:1000;
       background:var(--shopee);padding:10px 12px;
@@ -34,346 +35,189 @@
     }
     .topbar__more{width:24px;height:24px}
 
-    /* ================= Store header dengan gambar sampul ================= */
-    .store-hero {
-      position: relative;
-      padding: 40px 12px 20px;
-      background: url('Intan Mutiara Cell.jpg') center/cover no-repeat;
+    /* ================= STORE HEADER ================= */
+    .store-hero{
+      position:relative;
+      padding:40px 12px 20px;
+      background:url('Intan-Mutiara-Cell.jpg') center/cover no-repeat;
+      color:#fff;
     }
-    .store-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(255,255,255,0.35); /* transparan */
-      backdrop-filter: blur(4px);
+    .store-hero::before{
+      content:"";position:absolute;inset:0;
+      background:rgba(0,0,0,.35);
     }
     .store-card{
-      position: relative;
-      background: rgba(255,255,255,.85);
-      border: 1px solid rgba(255,255,255,.6);
-      border-radius:16px;
-      padding:12px;
+      position:relative;z-index:1;
+      background:rgba(255,255,255,.2);
+      border-radius:16px;padding:12px;
       display:flex;align-items:center;gap:12px;
-      z-index:1;
+      backdrop-filter:blur(6px);
+      color:#fff;
     }
-    .store-card__logo{
-      width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #fff;flex:0 0 56px
-    }
-    .store-card__meta{flex:1;min-width:0}
-    .store-card__name{
-      font-weight:700;font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
-    }
-    .store-card__stat{
-      color:var(--text-2);font-size:.85rem;margin-top:2px
-    }
-    .store-card__actions{
-      display:flex;gap:8px
-    }
-    .btn{
-      padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.08);
-      font-weight:600;font-size:.9rem;cursor:pointer;white-space:nowrap
-    }
-    .btn--follow{background:#fff;color:var(--text-1)}
-    .btn--chat{background:#fff;color:var(--text-1)}
+    .store-card__logo{width:56px;height:56px;border-radius:50%;overflow:hidden;flex:0 0 56px}
+    .store-card__name{font-weight:700;font-size:1.02rem}
+    .store-card__stat{font-size:.85rem;color:#eee}
+    .btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.2);color:#fff;font-weight:600;cursor:pointer}
     .btn:active{transform:translateY(1px)}
 
-    /* ================= Tabs ================= */
-    .tabs-wrap{
-      background:var(--neutral-2);padding:8px 0
-    }
+    /* ================= TABS ================= */
+    .tabs-wrap{background:var(--neutral-2)}
     .tabs{
       background:#fff;border-radius:16px 16px 0 0;
       display:flex;gap:8px;padding:0 12px;border-bottom:1.5px solid var(--border)
     }
-    .tab{
-      flex:0 0 auto;padding:14px 6px;margin:0 10px;
-      color:#555;font-weight:600;position:relative;text-decoration:none
-    }
+    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;font-weight:600;position:relative}
     .tab.active{color:var(--shopee)}
-    .tab.active::after{
-      content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--shopee)
-    }
+    .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--shopee)}
 
-    /* ================= Section heading ================= */
-    .section{
-      padding:12px;
-      background:#fff;
-    }
-    .section__head{
-      display:flex;align-items:center;justify-content:space-between;margin-bottom:10px
-    }
+    /* ================= SECTION ================= */
+    .section{padding:12px;background:#fff;margin-top:8px}
+    .section__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
     .section__title{font-size:1.02rem;font-weight:700}
-    .see-all{color:var(--shopee);text-decoration:none;font-weight:600;font-size:.9rem}
+    .see-all{color:var(--shopee);font-weight:600;font-size:.9rem}
 
-    /* ================= Category scroller ================= */
-    .kategori-scroller{
-      display:flex;gap:14px;overflow:auto;padding:6px 2px 8px
-    }
+    /* ================= CATEGORY ================= */
+    .kategori-scroller{display:flex;gap:14px;overflow:auto;padding:6px 2px 8px}
     .kategori-item{flex:0 0 auto;text-align:center;cursor:pointer}
-    .kategori-item img{
-      width:64px;height:64px;border-radius:50%;background:#fafafa;border:1px solid var(--border)
-    }
+    .kategori-item img{width:64px;height:64px;border-radius:50%;border:1px solid var(--border)}
     .kategori-item span{display:block;margin-top:6px;font-size:.85rem;color:#333}
 
-    /* ================= Product grid (mirip kartu Shopee) ================= */
-    .grid{
-      display:grid;gap:10px
-    }
-    .grid--product{
-      grid-template-columns:repeat(2,1fr)
-    }
+    /* ================= PRODUCT GRID ================= */
+    .grid{display:grid;gap:10px}
+    .grid--product{grid-template-columns:repeat(2,1fr)}
     @media(min-width:640px){.grid--product{grid-template-columns:repeat(4,1fr)}}
     @media(min-width:1024px){.grid--product{grid-template-columns:repeat(5,1fr)}}
+    .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+    .card__img{position:relative}
+    .card__img img{width:100%;aspect-ratio:1/1;object-fit:cover}
+    .badge{position:absolute;left:8px;top:8px;background:var(--shopee);color:#fff;border-radius:4px;font-size:.72rem;padding:2px 6px;font-weight:700}
+    .card__body{padding:8px 10px;flex:1;display:flex;flex-direction:column;gap:6px}
+    .card__title{font-size:.9rem;line-height:1.25em;height:2.5em;overflow:hidden}
+    .price{color:var(--shopee);font-weight:800;font-size:1rem}
+    .price del{color:#aaa;margin-left:6px;font-weight:500;font-size:.8rem}
+    .meta{display:flex;gap:8px;font-size:.8rem;color:#777}
+    .chip{display:inline-flex;gap:4px;align-items:center;padding:2px 6px;border:1px solid var(--border);border-radius:6px}
+    .chip .star::before{content:"★";color:#ffb400}
 
-    .card{
-      background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column
-    }
-    .card__img{
-      position:relative;background:#fff
-    }
-    .card__img img{
-      width:100%;aspect-ratio:1/1;object-fit:cover;background:#fff
-    }
-    .badge{
-      position:absolute;left:8px;top:8px;
-      background:var(--shopee);color:#fff;border-radius:4px;
-      font-size:.72rem;padding:2px 6px;font-weight:700
-    }
-    .card__body{padding:8px 10px;display:flex;flex-direction:column;gap:6px;flex:1}
-    .card__title{
-      font-size:.9rem;line-height:1.25em;height:2.5em;overflow:hidden;color:#333
-    }
-    .price{
-      color:var(--shopee);font-weight:800;font-size:1rem
-    }
-    .price del{
-      color:#aaa;margin-left:6px;font-weight:500;font-size:.8rem
-    }
-    .meta{
-      display:flex;gap:8px;align-items:center;color:#777;font-size:.8rem
-    }
-    .chip{
-      display:inline-flex;gap:4px;align-items:center;
-      padding:2px 6px;border:1px solid var(--border);border-radius:6px;background:#fff
-    }
-    .chip .star{width:14px;height:14px;display:inline-block}
-    .chip .star::before{content:"★";color:#ffb400;font-size:.9rem;line-height:1}
-    .meta .sold{white-space:nowrap}
-
-    /* ================= Pagination ================= */
-    .pagination{display:flex;justify-content:center;gap:6px;padding:14px 0;background:#fff;border-top:1px solid var(--border)}
-    .pagination button{
-      background:#fff;border:1px solid var(--border);border-radius:8px;
-      padding:6px 10px;cursor:pointer
-    }
-    .pagination button.active{background:var(--shopee);border-color:var(--shopee);color:#fff}
-
-    /* ================= Footer ================= */
-    footer{background:#fff;border-top:1px solid var(--border);padding:18px;color:#666;text-align:center}
-    .hide-desktop{display:block}
-    @media(min-width:1024px){.hide-desktop{display:none}}
+    /* ================= FOOTER ================= */
+    footer{background:#fff;border-top:1px solid var(--border);padding:18px;text-align:center;color:#666;margin-top:20px}
   </style>
 </head>
 <body>
-
-  <!-- ========== TOP BAR ========== -->
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar__back"></div>
     <div class="topbar__search"><input id="searchInput" placeholder="Cari di Toko"></div>
     <div class="topbar__more"></div>
   </div>
 
-  <!-- ========== STORE HEADER ========== -->
+  <!-- STORE HEADER -->
   <div class="store-hero">
     <div class="store-card">
-      <div class="store-card__logo"><img src="Intan Mutiara.jpg" alt="Logo Toko"></div>
+      <div class="store-card__logo"><img src="Intan-Mutiara.jpg" alt="Logo Toko"></div>
       <div class="store-card__meta">
         <div class="store-card__name">INTAN MUTIARA CELL</div>
         <div class="store-card__stat">⭐ 4.8 | 115,2RB Pengikut</div>
       </div>
       <div class="store-card__actions">
-        <button class="btn btn--follow">Mengikuti</button>
-        <button class="btn btn--chat">Chat</button>
+        <button class="btn">Mengikuti</button>
+        <button class="btn">Chat</button>
       </div>
     </div>
   </div>
 
-  <!-- ========== TABS ========== -->
+  <!-- TABS -->
   <div class="tabs-wrap">
     <div class="tabs">
-      <a class="tab active" href="#">Toko</a>
-      <a class="tab" href="#">Produk</a>
-      <a class="tab" href="#">Kategori</a>
+      <div class="tab active" data-tab="toko">Toko</div>
+      <div class="tab" data-tab="produk">Produk</div>
+      <div class="tab" data-tab="kategori">Kategori</div>
     </div>
   </div>
 
-  <!-- ========== KATEGORI ========== -->
-  <section class="section">
-    <div class="section__head">
-      <div class="section__title">Kategori</div>
-      <a class="see-all" href="#">Lihat Semua &gt;</a>
-    </div>
-    <div class="kategori-scroller" id="categoryList"><!-- diisi JS --></div>
-  </section>
+  <!-- CONTENT -->
+  <main id="content"></main>
 
-  <!-- ========== PRODUK ========== -->
-  <section class="section" style="margin-top:8px">
-    <div class="section__head">
-      <div class="section__title">Kamu Mungkin Suka</div>
-      <a class="see-all" href="#">Lihat Semua &gt;</a>
-    </div>
-
-    <div class="grid grid--product" id="productGrid"><!-- diisi JS --></div>
-    <div class="pagination" id="pagination"></div>
-  </section>
-
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer>
     Intan Mutiara, Jl. Pemuda No.27-31, Embong Kaliasin, Genteng, Surabaya • WA: 0896-5342-9419
   </footer>
 
   <script>
-    /* =================== DATA & STATE =================== */
     const apiURL = "https://script.google.com/macros/s/AKfycbwhEx_j7s685ef89RppbIwjgwVePZyldnx8jC33lchkmirpWtr4Pm1sqhk5L7NjH_M6/exec";
-    let currentCategory = "All";
     let products = [];
-    let currentPage = 1;
-    let perPage = window.innerWidth < 768 ? 16 : 40;
 
-    const productGrid = document.getElementById("productGrid");
-    const searchInput = document.getElementById("searchInput");
-    const categoryList = document.getElementById("categoryList");
-    const pagination = document.getElementById("pagination");
+    const content = document.getElementById("content");
+    const tabs = document.querySelectorAll(".tab");
 
-    /* =================== CACHE =================== */
-    const CACHE_KEY = "cachedProducts";
-    const CACHE_TIME_KEY = "cachedTime";
-    const CACHE_DURATION = 1000 * 60 * 5;
-
-    const logoMap = {
-      "All": "All.png","iPhone":"iPhone.png","Oppo":"Oppo.png","Vivo":"Vivo.png","Samsung":"Samsung.png",
-      "Xiaomi":"Xiaomi.png","Realme":"Realme.png","Infinix":"Infinix.png","Tecno":"Tecno.png","iTel":"iTel.png",
-      "Nokia":"Nokia.png","ZTE":"ZTE.png","Asus":"Asus.png","Huawei":"Huawei.png",
-    };
-
-    /* =================== FETCH =================== */
-    async function fetchProducts(force = false) {
-      try {
-        const cached = localStorage.getItem(CACHE_KEY);
-        const cachedTime = localStorage.getItem(CACHE_TIME_KEY);
-        if (!force && cached && cachedTime && (Date.now() - cachedTime < CACHE_DURATION)) {
-          products = JSON.parse(cached);
-          generateCategories();
-          renderProducts();
-          return;
-        }
-
-        const res = await fetch(apiURL);
-        const data = await res.json();
-        products = data;
-
-        localStorage.setItem(CACHE_KEY, JSON.stringify(products));
-        localStorage.setItem(CACHE_TIME_KEY, Date.now());
-
-        generateCategories();
-        renderProducts();
-      } catch (err) {
-        productGrid.innerHTML = "<p>Gagal memuat produk. Periksa koneksi atau API!</p>";
-        console.error(err);
-      }
-    }
-
-    /* =================== UI =================== */
-    function generateCategories() {
-      categoryList.innerHTML = "";
-      const categories = ["All", ...new Set(products.map(p => p.category))];
-      categories.forEach(cat => {
-        const item = document.createElement("div");
-        item.className = "kategori-item";
-        const logo = logoMap[cat] || "All.png";
-        item.innerHTML = `<img src="${logo}" alt="${cat}"><span>${cat}</span>`;
-        item.addEventListener("click", () => {
-          currentCategory = cat;
-          currentPage = 1;
-          renderProducts(searchInput.value);
-        });
-        categoryList.appendChild(item);
+    tabs.forEach(tab=>{
+      tab.addEventListener("click",()=>{
+        tabs.forEach(t=>t.classList.remove("active"));
+        tab.classList.add("active");
+        render(tab.dataset.tab);
       });
-    }
-
-    function renderProducts(keyword = "") {
-      productGrid.innerHTML = "";
-      const filtered = products.filter(p =>
-        p.title.toLowerCase().includes(keyword.toLowerCase()) &&
-        (currentCategory === "All" || p.category === currentCategory)
-      );
-
-      if (!filtered.length) {
-        productGrid.innerHTML = "<p>Tidak ada produk.</p>";
-        pagination.innerHTML = "";
-        return;
-      }
-
-      const totalPages = Math.ceil(filtered.length / perPage);
-      const start = (currentPage - 1) * perPage;
-      const end = start + perPage;
-      const paginated = filtered.slice(start, end);
-
-      paginated.forEach(p => {
-        const v = p.variants?.[0];
-        const imageUrl = p.images?.[0] || 'https://via.placeholder.com/300?text=No+Image';
-        const price = v ? Number(v.price).toLocaleString("id-ID") : null;
-        const cut = v?.diskon ? Number(v.diskon).toLocaleString("id-ID") : null;
-
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-          <a href="detail.html?id=${p.id}" style="color:inherit;text-decoration:none">
-            <div class="card__img">
-              <img src="${imageUrl}" alt="${p.title}"
-                   onerror="this.onerror=null;this.src='https://via.placeholder.com/300?text=No+Image'"/>
-              <span class="badge">PROMO XTRA</span>
-            </div>
-            <div class="card__body">
-              <div class="card__title">${p.title}</div>
-              <div class="price">Rp ${price ?? "-" } ${cut ? `<del>Rp ${cut}</del>` : ""}</div>
-              <div class="meta">
-                <span class="chip"><i class="star"></i> ${p.rating || "4.8"}</span>
-                <span class="sold">Terjual ${p.sold || "100+"}</span>
-              </div>
-            </div>
-          </a>
-        `;
-        productGrid.appendChild(card);
-      });
-
-      // pagination
-      pagination.innerHTML = "";
-      const addBtn = (label, onclick, active=false) => {
-        const b=document.createElement("button");
-        b.textContent=label; if(active) b.classList.add("active");
-        b.addEventListener("click", onclick); pagination.appendChild(b);
-      };
-      if(currentPage>1) addBtn("<",()=>{currentPage--;renderProducts(searchInput.value);});
-      for(let i=1;i<=totalPages;i++){
-        if(i===1||i===totalPages||Math.abs(i-currentPage)<=2){
-          addBtn(i,()=>{currentPage=i;renderProducts(searchInput.value);},i===currentPage);
-        }else if(i===currentPage-3||i===currentPage+3){
-          const s=document.createElement("span"); s.textContent="…"; s.style.padding="6px 8px"; pagination.appendChild(s);
-        }
-      }
-      if(currentPage<totalPages) addBtn(">",()=>{currentPage++;renderProducts(searchInput.value);});
-    }
-
-    searchInput.addEventListener("input", () => {
-      currentPage = 1;
-      renderProducts(searchInput.value);
     });
 
-    window.addEventListener("resize", () => {
-      perPage = window.innerWidth < 768 ? 16 : 40;
-      renderProducts(searchInput.value);
-    });
+    async function fetchProducts(){
+      const res = await fetch(apiURL);
+      products = await res.json();
+      render("toko");
+    }
+
+    function createProductCard(p){
+      const v = p.variants?.[0];
+      const price = v ? Number(v.price).toLocaleString("id-ID") : "-";
+      const cut = v?.diskon ? `<del>Rp ${Number(v.diskon).toLocaleString("id-ID")}</del>` : "";
+      return `
+      <div class="card">
+        <div class="card__img">
+          <img src="${p.images?.[0] || 'https://via.placeholder.com/300'}" alt="${p.title}">
+          <span class="badge">PROMO</span>
+        </div>
+        <div class="card__body">
+          <div class="card__title">${p.title}</div>
+          <div class="price">Rp ${price} ${cut}</div>
+          <div class="meta"><span class="chip"><span class="star"></span> ${p.rating||"4.8"}</span><span>Terjual ${p.sold||"100+"}</span></div>
+        </div>
+      </div>`;
+    }
+
+    function render(tab){
+      if(tab==="toko"){
+        content.innerHTML=`
+          <section class="section">
+            <div class="section__head"><div class="section__title">Kamu Mungkin Suka</div><a class="see-all">Lihat Semua ></a></div>
+            <div class="grid grid--product">${products.slice().sort(()=>Math.random()-0.5).slice(0,15).map(createProductCard).join("")}</div>
+          </section>
+          <section class="section"><img src="Intan-Mutiara-Cell.jpg" alt="Sampul"></section>
+          <section class="section">
+            <div class="section__head"><div class="section__title">Penawaran Terbaik</div><a class="see-all">Lihat Semua ></a></div>
+            <div class="grid grid--product">${products.slice(0,15).map(createProductCard).join("")}</div>
+          </section>
+          <section class="section">
+            <div class="section__head"><div class="section__title">Produk Baru</div></div>
+            <div class="grid grid--product">${products.slice(0,4).map(createProductCard).join("")}</div>
+          </section>
+          <section class="section">
+            <div class="section__head"><div class="section__title">Kategori</div><a class="see-all">Lihat Semua ></a></div>
+            <div class="kategori-scroller">${[...new Set(products.map(p=>p.category))].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div>
+          </section>
+          <section class="section">
+            <div class="section__head"><div class="section__title">Penjualan Tertinggi</div></div>
+            <div class="grid grid--product">${products.slice(0,6).map(createProductCard).join("")}</div>
+          </section>
+          <section class="section">
+            <div class="section__head"><div class="section__title">Rekomendasi Toko</div></div>
+            <div class="grid grid--product">${products.slice(6,12).map(createProductCard).join("")}</div>
+          </section>`;
+      }
+      if(tab==="produk"){
+        content.innerHTML=`<section class="section"><div class="section__head"><div class="section__title">Semua Produk</div></div><div class="grid grid--product">${products.map(createProductCard).join("")}</div></section>`;
+      }
+      if(tab==="kategori"){
+        content.innerHTML=`<section class="section"><div class="section__head"><div class="section__title">Semua Kategori</div></div><div class="kategori-scroller">${[...new Set(products.map(p=>p.category))].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div></section>`;
+      }
+    }
 
     fetchProducts();
   </script>
