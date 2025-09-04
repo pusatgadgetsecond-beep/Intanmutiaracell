@@ -6,7 +6,8 @@
   <title>Intan Mutiara Cell - Marketplace</title>
   <style>
     :root{
-      --shopee:#ee4d2d;
+      --shopee:#28ceff;   /* warna utama (Shopee) */
+      --price-color:#ee4d2d; /* warna harga (ubah sesuai keinginan) */
       --neutral-1:#fff;
       --neutral-2:#f6f6f6;
       --border:#e5e5e5;
@@ -24,7 +25,10 @@
       background:var(--shopee);padding:10px 12px;
       display:flex;gap:10px;align-items:center;
     }
-    .topbar__back,.topbar__more{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.2)}
+    .topbar__back,.topbar__more{
+      width:24px;height:24px;border-radius:50%;
+      background:rgba(255,255,255,.2)
+    }
     .topbar__search{flex:1}
     .topbar__search input{
       width:100%;height:36px;border:none;border-radius:999px;
@@ -52,21 +56,56 @@
       background:transparent;
     }
     .store-card__logo{
-      width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #fff
+      width:56px;height:56px;border-radius:50%;overflow:hidden;
+      border:2px solid #fff
     }
     .store-card__meta{flex:1}
-    .store-card__name{font-weight:700;font-size:1.02rem;color:#fff}
-    .store-card__stat{color:#f0f0f0;font-size:.85rem}
-    .store-card__actions{display:flex;gap:8px}
-    .btn{padding:8px 12px;border-radius:10px;font-weight:600;font-size:.9rem;cursor:pointer}
-    .btn--follow,.btn--chat{background:#fff;color:var(--text-1)}
+    .store-card__name{
+      font-weight:700;
+      font-size:1.05rem;
+      color:var(--text-1);
+    }
+    .store-card__stat{color:#555;font-size:.85rem;margin-top:2px}
+
+    /* tombol mirip Shopee */
+    .store-card__actions{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .btn{
+      padding:8px 14px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:.88rem;
+      cursor:pointer;
+      border:1px solid var(--border);
+      text-align:center;
+    }
+    .btn--follow{
+      background:var(--shopee);
+      color:#fff;
+      border:none;
+    }
+    .btn--chat{
+      background:#fff;
+      color:var(--text-1);
+    }
 
     /* ================= Tabs ================= */
     .tabs-wrap{background:var(--neutral-2);padding:8px 0}
-    .tabs{background:#fff;border-radius:16px 16px 0 0;display:flex;gap:8px;padding:0 12px;border-bottom:1.5px solid var(--border)}
-    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;color:#555;font-weight:600;text-decoration:none;position:relative}
+    .tabs{
+      background:#fff;border-radius:16px 16px 0 0;
+      display:flex;gap:8px;padding:0 12px;
+      border-bottom:1.5px solid var(--border)
+    }
+    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;
+      color:#555;font-weight:600;text-decoration:none;position:relative}
     .tab.active{color:var(--shopee)}
-    .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--shopee)}
+    .tab.active::after{
+      content:"";position:absolute;left:0;right:0;bottom:-1px;
+      height:3px;border-radius:3px;background:var(--shopee)
+    }
 
     /* ================= Section ================= */
     .section{padding:12px;background:#fff;margin-top:8px}
@@ -81,7 +120,7 @@
 
     /* ================= Category ================= */
     .kategori-scroller{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 8px}
-    .kategori-item{flex:0 0 auto;text-align:center}
+    .kategori-item{flex:0 0 auto;text-align:center;cursor:pointer}
     .kategori-item img{width:64px;height:64px;border-radius:50%;background:#fafafa;border:1px solid var(--border)}
     .kategori-item span{display:block;margin-top:6px;font-size:.85rem;color:#333}
 
@@ -92,7 +131,7 @@
     .badge{position:absolute;left:8px;top:8px;background:var(--shopee);color:#fff;border-radius:4px;font-size:.72rem;padding:2px 6px;font-weight:700}
     .card__body{padding:8px;display:flex;flex-direction:column;gap:6px}
     .card__title{font-size:.85rem;height:2.5em;overflow:hidden;color:#333}
-    .price{color:var(--shopee);font-weight:800;font-size:.9rem}
+    .price{color:var(--price-color);font-weight:800;font-size:.9rem}
     .meta{display:flex;gap:8px;align-items:center;color:#777;font-size:.75rem}
     .chip{display:inline-flex;gap:4px;align-items:center;padding:2px 6px;border:1px solid var(--border);border-radius:6px}
     .chip .star::before{content:"★";color:#ffb400;font-size:.9rem}
@@ -156,7 +195,7 @@
       const price=v?Number(v.price).toLocaleString("id-ID"):"-";
       return `
         <div class="card">
-          <div class="card__img"><img src="${img}" alt="${p.title}"><span class="badge">Promo</span></div>
+          <div class="card__img"><img src="${img}" alt="${p.title}"><span class="badge">Diskon 99%</span></div>
           <div class="card__body">
             <div class="card__title">${p.title}</div>
             <div class="price">Rp ${price}</div>
@@ -196,7 +235,7 @@
           <div class="section__head"><div class="section__title">Kategori</div></div>
           <div class="kategori-scroller">
             ${["iPhone","Oppo","Vivo","Samsung","Xiaomi","Realme","Infinix","iTel","Tecno","Huawei","ZTE","Nokia","Asus"]
-              .map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}
+              .map(c=>`<div class="kategori-item" onclick="renderByCategory('${c}')"><img src="${c}.png"><span>${c}</span></div>`).join("")}
           </div>
         </section>
         <section class="section">
@@ -220,10 +259,18 @@
         `<section class="section"><div class="section__head"><div class="section__title">Semua Kategori</div></div>
         <div class="kategori-scroller">
           ${["iPhone","Oppo","Vivo","Samsung","Xiaomi","Realme","Infinix","iTel","Tecno","Huawei","ZTE","Nokia","Asus"]
-            .map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}
+            .map(c=>`<div class="kategori-item" onclick="renderByCategory('${c}')"><img src="${c}.png"><span>${c}</span></div>`).join("")}
         </div></section>`;
     }
 
+    function renderByCategory(cat){
+      const filtered=products.filter(p=>p.title.toLowerCase().includes(cat.toLowerCase()));
+      document.getElementById("tabContent").innerHTML=
+        `<section class="section"><div class="section__head"><div class="section__title">${cat}</div></div>
+        <div class="grid grid--2col">${filtered.length?filtered.map(createProductCard).join(""):"<p>Tidak ada produk</p>"}</div></section>`;
+    }
+
+    // Tab click
     document.querySelectorAll(".tab").forEach(tab=>{
       tab.addEventListener("click",e=>{
         e.preventDefault();
@@ -233,6 +280,20 @@
         if(tab.dataset.tab==="produk") renderProduk();
         if(tab.dataset.tab==="kategori") renderKategori();
       });
+    });
+
+    // Swipe gesture (mobile)
+    let startX=0;
+    document.addEventListener("touchstart",e=>{startX=e.touches[0].clientX});
+    document.addEventListener("touchend",e=>{
+      let endX=e.changedTouches[0].clientX;
+      let diff=endX-startX;
+      if(Math.abs(diff)>50){
+        const tabs=Array.from(document.querySelectorAll(".tab"));
+        let activeIndex=tabs.findIndex(t=>t.classList.contains("active"));
+        if(diff<0 && activeIndex<tabs.length-1){tabs[activeIndex+1].click()}
+        if(diff>0 && activeIndex>0){tabs[activeIndex-1].click()}
+      }
     });
 
     function openChat(){alert("Fitur chat pembeli & seller akan ditambahkan di sini.")}
