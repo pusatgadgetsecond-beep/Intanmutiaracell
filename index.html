@@ -9,15 +9,13 @@
       --shopee:#ee4d2d;
       --neutral-1:#fff;
       --neutral-2:#f6f6f6;
-      --neutral-3:#f0f0f0;
+      --border:#e5e5e5;
       --text-1:#111;
       --text-2:#666;
-      --text-3:#999;
-      --border:#e5e5e5;
       --radius:12px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--neutral-2);color:var(--text-1)}
+    body{margin:0;font-family:"Poppins",sans-serif;background:var(--neutral-2);color:var(--text-1)}
     img{max-width:100%;display:block}
 
     /* ================= Header ================= */
@@ -54,20 +52,19 @@
       background:transparent;
     }
     .store-card__logo{
-      width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #fff;flex:0 0 56px
+      width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #fff
     }
-    .store-card__meta{flex:1;min-width:0}
-    .store-card__name{font-weight:700;font-size:1.02rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
-    .store-card__stat{color:#f0f0f0;font-size:.85rem;margin-top:2px}
+    .store-card__meta{flex:1}
+    .store-card__name{font-weight:700;font-size:1.02rem;color:#fff}
+    .store-card__stat{color:#f0f0f0;font-size:.85rem}
     .store-card__actions{display:flex;gap:8px}
-    .btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.08);font-weight:600;font-size:.9rem;cursor:pointer;white-space:nowrap}
+    .btn{padding:8px 12px;border-radius:10px;font-weight:600;font-size:.9rem;cursor:pointer}
     .btn--follow,.btn--chat{background:#fff;color:var(--text-1)}
-    .btn:active{transform:translateY(1px)}
 
     /* ================= Tabs ================= */
     .tabs-wrap{background:var(--neutral-2);padding:8px 0}
     .tabs{background:#fff;border-radius:16px 16px 0 0;display:flex;gap:8px;padding:0 12px;border-bottom:1.5px solid var(--border)}
-    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;color:#555;font-weight:600;position:relative;text-decoration:none}
+    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;color:#555;font-weight:600;text-decoration:none;position:relative}
     .tab.active{color:var(--shopee)}
     .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--shopee)}
 
@@ -77,32 +74,32 @@
     .section__title{font-size:1.02rem;font-weight:700}
     .see-all{color:var(--shopee);text-decoration:none;font-weight:600;font-size:.9rem}
 
+    /* ================= Horizontal scroll ================= */
+    .scroller{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+    .scroller::-webkit-scrollbar{display:none}
+    .scroller > *{flex:0 0 auto;scroll-snap-align:start}
+
     /* ================= Category ================= */
-    .kategori-scroller{display:flex;gap:14px;overflow:auto;padding:6px 2px 8px}
-    .kategori-item{flex:0 0 auto;text-align:center;cursor:pointer}
+    .kategori-scroller{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 8px}
+    .kategori-item{flex:0 0 auto;text-align:center}
     .kategori-item img{width:64px;height:64px;border-radius:50%;background:#fafafa;border:1px solid var(--border)}
     .kategori-item span{display:block;margin-top:6px;font-size:.85rem;color:#333}
 
-    /* ================= Product grid ================= */
-    .grid{display:grid;gap:10px}
-    .grid--product{grid-template-columns:repeat(2,1fr)}
-    @media(min-width:640px){.grid--product{grid-template-columns:repeat(4,1fr)}}
-    @media(min-width:1024px){.grid--product{grid-template-columns:repeat(5,1fr)}}
-
-    /* khusus 2 kolom */
-    .grid--2col{grid-template-columns:repeat(2,1fr);gap:12px}
-
-    .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-    .card__img{position:relative;background:#fff}
+    /* ================= Product card ================= */
+    .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;width:150px}
+    .card__img{position:relative}
     .card__img img{width:100%;aspect-ratio:1/1;object-fit:cover}
     .badge{position:absolute;left:8px;top:8px;background:var(--shopee);color:#fff;border-radius:4px;font-size:.72rem;padding:2px 6px;font-weight:700}
-    .card__body{padding:8px 10px;display:flex;flex-direction:column;gap:6px;flex:1}
-    .card__title{font-size:.9rem;line-height:1.25em;height:2.5em;overflow:hidden;color:#333}
-    .price{color:var(--shopee);font-weight:800;font-size:1rem}
-    .price del{color:#aaa;margin-left:6px;font-weight:500;font-size:.8rem}
-    .meta{display:flex;gap:8px;align-items:center;color:#777;font-size:.8rem}
-    .chip{display:inline-flex;gap:4px;align-items:center;padding:2px 6px;border:1px solid var(--border);border-radius:6px;background:#fff}
-    .chip .star::before{content:"★";color:#ffb400;font-size:.9rem;line-height:1}
+    .card__body{padding:8px;display:flex;flex-direction:column;gap:6px}
+    .card__title{font-size:.85rem;height:2.5em;overflow:hidden;color:#333}
+    .price{color:var(--shopee);font-weight:800;font-size:.9rem}
+    .meta{display:flex;gap:8px;align-items:center;color:#777;font-size:.75rem}
+    .chip{display:inline-flex;gap:4px;align-items:center;padding:2px 6px;border:1px solid var(--border);border-radius:6px}
+    .chip .star::before{content:"★";color:#ffb400;font-size:.9rem}
+
+    /* ================= Grid ================= */
+    .grid{display:grid;gap:12px}
+    .grid--2col{grid-template-columns:repeat(2,1fr)}
 
     /* ================= Footer ================= */
     footer{background:#fff;border-top:1px solid var(--border);padding:18px;color:#666;text-align:center}
@@ -113,7 +110,7 @@
   <!-- ========== TOP BAR ========== -->
   <div class="topbar">
     <div class="topbar__back"></div>
-    <div class="topbar__search"><input id="searchInput" placeholder="Cari di Toko"></div>
+    <div class="topbar__search"><input placeholder="Cari di Toko"></div>
     <div class="topbar__more"></div>
   </div>
 
@@ -159,7 +156,7 @@
       const price=v?Number(v.price).toLocaleString("id-ID"):"-";
       return `
         <div class="card">
-          <div class="card__img"><img src="${img}" alt="${p.title}"><span class="badge">Diskon 99%</span></div>
+          <div class="card__img"><img src="${img}" alt="${p.title}"><span class="badge">Promo</span></div>
           <div class="card__body">
             <div class="card__title">${p.title}</div>
             <div class="price">Rp ${price}</div>
@@ -180,31 +177,51 @@
     function renderToko(){
       const tab=document.getElementById("tabContent");
       tab.innerHTML=`
-        <section class="section"><div class="section__head"><div class="section__title">Kamu Mungkin Suka</div><a class="see-all" href="#">Selengkapnya ></a></div>
-          <div class="grid grid--product">${products.slice(0,15).map(createProductCard).join("")}</div></section>
-        <section class="section"><img src="Intan Mutiara Cell.jpg" style="width:100%;border-radius:12px"></section>
-        <section class="section"><div class="section__head"><div class="section__title">Penawaran Terbaik</div><a class="see-all" href="#">Selengkapnya ></a></div>
-          <div class="grid grid--product">${products.slice(15,30).map(createProductCard).join("")}</div></section>
-        <section class="section"><div class="section__head"><div class="section__title">Produk Baru</div></div>
-          <div class="grid grid--product">${products.slice(30,34).map(createProductCard).join("")}</div></section>
-        <section class="section"><div class="section__head"><div class="section__title">Kategori</div></div>
-          <div class="kategori-scroller"><div class="kategori-item"><img src="iPhone.png"><span>iPhone</span></div></div></section>
-        <section class="section"><div class="section__head"><div class="section__title">Penjualan Tertinggi</div></div>
-          <div class="grid grid--2col">${products.slice(34,40).map(createProductCard).join("")}</div></section>
-        <section class="section"><div class="section__head"><div class="section__title">Rekomendasi Toko</div></div>
-          <div class="grid grid--2col">${products.slice(40,46).map(createProductCard).join("")}</div></section>`;
+        <section class="section">
+          <div class="section__head"><div class="section__title">Kamu Mungkin Suka</div></div>
+          <div class="scroller">${products.slice(0,15).map(createProductCard).join("")}</div>
+        </section>
+        <section class="section">
+          <img src="Intan Mutiara Cell.jpg" style="width:100%;border-radius:12px">
+        </section>
+        <section class="section">
+          <div class="section__head"><div class="section__title">Penawaran Terbaik</div></div>
+          <div class="scroller">${products.slice(15,30).map(createProductCard).join("")}</div>
+        </section>
+        <section class="section">
+          <div class="section__head"><div class="section__title">Produk Baru</div></div>
+          <div class="scroller">${products.slice(30,34).map(createProductCard).join("")}</div>
+        </section>
+        <section class="section">
+          <div class="section__head"><div class="section__title">Kategori</div></div>
+          <div class="kategori-scroller">
+            ${["iPhone","Oppo","Vivo","Samsung","Xiaomi","Realme","Infinix","iTel","Tecno","Huawei","ZTE","Nokia","Asus"]
+              .map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}
+          </div>
+        </section>
+        <section class="section">
+          <div class="section__head"><div class="section__title">Penjualan Tertinggi</div></div>
+          <div class="grid grid--2col">${products.slice(34,40).map(createProductCard).join("")}</div>
+        </section>
+        <section class="section">
+          <div class="section__head"><div class="section__title">Rekomendasi Toko</div></div>
+          <div class="grid grid--2col">${products.slice(40,46).map(createProductCard).join("")}</div>
+        </section>`;
     }
 
     function renderProduk(){
       document.getElementById("tabContent").innerHTML=
         `<section class="section"><div class="section__head"><div class="section__title">Semua Produk</div></div>
-        <div class="grid grid--product">${products.map(createProductCard).join("")}</div></section>`;
+        <div class="grid grid--2col">${products.map(createProductCard).join("")}</div></section>`;
     }
 
     function renderKategori(){
       document.getElementById("tabContent").innerHTML=
         `<section class="section"><div class="section__head"><div class="section__title">Semua Kategori</div></div>
-        <div class="kategori-scroller">${["iPhone","Oppo","Vivo","Samsung","Xiaomi"].map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}</div></section>`;
+        <div class="kategori-scroller">
+          ${["iPhone","Oppo","Vivo","Samsung","Xiaomi","Realme","Infinix","iTel","Tecno","Huawei","ZTE","Nokia","Asus"]
+            .map(c=>`<div class="kategori-item"><img src="${c}.png"><span>${c}</span></div>`).join("")}
+        </div></section>`;
     }
 
     document.querySelectorAll(".tab").forEach(tab=>{
