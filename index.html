@@ -6,8 +6,8 @@
   <title>Intan Mutiara Cell - Marketplace</title>
   <style>
     :root{
-      --shopee:#28ceff;   /* warna utama (Shopee) */
-      --price-color:#ee4d2d; /* warna harga (ubah sesuai keinginan) */
+      --shopee:#28ceff;
+      --price-color:#ee4d2d;
       --neutral-1:#fff;
       --neutral-2:#f6f6f6;
       --border:#e5e5e5;
@@ -19,113 +19,57 @@
     body{margin:0;font-family:"Poppins",sans-serif;background:var(--neutral-2);color:var(--text-1)}
     img{max-width:100%;display:block}
 
-    /* ================= Header ================= */
-    .topbar{
-      position:sticky;top:0;z-index:1000;
-      background:var(--shopee);padding:10px 12px;
-      display:flex;gap:10px;align-items:center;
-    }
-    .topbar__back,.topbar__more{
-      width:24px;height:24px;border-radius:50%;
-      background:rgba(255,255,255,.2)
-    }
+    /* Header atas */
+    .topbar{position:sticky;top:0;z-index:1000;background:var(--shopee);padding:10px 12px;display:flex;gap:10px;align-items:center}
+    .topbar__back,.topbar__more{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.2)}
     .topbar__search{flex:1}
-    .topbar__search input{
-      width:100%;height:36px;border:none;border-radius:999px;
-      padding:0 14px;font-size:.95rem;outline:none
-    }
+    .topbar__search input{width:100%;height:36px;border:none;border-radius:999px;padding:0 14px;font-size:.95rem;outline:none}
 
-    /* ================= Store header ================= */
-    .store-hero {
-      position: relative;
-      padding: 40px 12px 20px;
-      background: url('Intan Mutiara Cell.jpg') center/cover no-repeat;
-    }
-    .store-hero::before {
-      content: "";
-      position: absolute;inset: 0;
-      background: rgba(255,255,255,0.3);
-      backdrop-filter: blur(3px);
-    }
-    .store-card{
-      position: relative;
-      border-radius:16px;
-      padding:12px;
-      display:flex;align-items:center;gap:12px;
-      z-index:1;
-      background:transparent;
-    }
-    .store-card__logo{
-      width:56px;height:56px;border-radius:50%;overflow:hidden;
-      border:2px solid #fff
-    }
+    /* Sampul toko */
+    .store-hero{position:relative;padding:40px 12px 20px;background:url('Intan Mutiara Cell.jpg') center/cover no-repeat}
+    .store-hero::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,0.3);backdrop-filter:blur(3px)}
+    .store-card{position:relative;border-radius:16px;padding:12px;display:flex;align-items:center;gap:12px;z-index:1;background:transparent}
+    .store-card__logo{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #fff}
     .store-card__meta{flex:1}
-    .store-card__name{
-      font-weight:700;
-      font-size:1.05rem;
-      color:var(--text-1);
-    }
+    .store-card__name{font-weight:700;font-size:1.05rem;color:var(--text-1)}
     .store-card__stat{color:#555;font-size:.85rem;margin-top:2px}
+    .store-card__actions{display:flex;flex-direction:column;gap:6px}
+    .btn{padding:8px 14px;border-radius:8px;font-weight:600;font-size:.88rem;cursor:pointer;border:1px solid var(--border);text-align:center}
+    .btn--follow{background:var(--shopee);color:#fff;border:none}
+    .btn--chat{background:#fff;color:var(--text-1)}
 
-    /* tombol mirip Shopee */
-    .store-card__actions{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-    }
-    .btn{
-      padding:8px 14px;
-      border-radius:8px;
-      font-weight:600;
-      font-size:.88rem;
-      cursor:pointer;
-      border:1px solid var(--border);
-      text-align:center;
-    }
-    .btn--follow{
-      background:var(--shopee);
-      color:#fff;
-      border:none;
-    }
-    .btn--chat{
-      background:#fff;
-      color:var(--text-1);
-    }
-
-    /* ================= Tabs ================= */
+    /* Tabs */
     .tabs-wrap{background:var(--neutral-2);padding:8px 0}
-    .tabs{
-      background:#fff;border-radius:16px 16px 0 0;
-      display:flex;gap:8px;padding:0 12px;
-      border-bottom:1.5px solid var(--border)
-    }
-    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;
-      color:#555;font-weight:600;text-decoration:none;position:relative}
+    .tabs{background:#fff;border-radius:16px 16px 0 0;display:flex;gap:8px;padding:0 12px;border-bottom:1.5px solid var(--border)}
+    .tab{flex:0 0 auto;padding:14px 6px;margin:0 10px;color:#555;font-weight:600;text-decoration:none;position:relative}
     .tab.active{color:var(--shopee)}
-    .tab.active::after{
-      content:"";position:absolute;left:0;right:0;bottom:-1px;
-      height:3px;border-radius:3px;background:var(--shopee)
-    }
+    .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--shopee)}
 
-    /* ================= Section ================= */
+    /* Section */
     .section{padding:12px;background:#fff;margin-top:8px}
     .section__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
     .section__title{font-size:1.02rem;font-weight:700}
     .see-all{color:var(--shopee);text-decoration:none;font-weight:600;font-size:.9rem}
 
-    /* ================= Horizontal scroll ================= */
-    .scroller{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+    /* Scroller swipe halus */
+    .scroller{
+      display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      scroll-behavior:smooth;
+      padding-bottom:6px
+    }
     .scroller::-webkit-scrollbar{display:none}
     .scroller > *{flex:0 0 auto;scroll-snap-align:start}
 
-    /* ================= Category ================= */
-    .kategori-scroller{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 8px}
-    .kategori-item{flex:0 0 auto;text-align:center;cursor:pointer}
+    /* Kategori */
+    .kategori-scroller{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;padding:6px 2px 8px}
+    .kategori-scroller::-webkit-scrollbar{display:none}
+    .kategori-item{flex:0 0 auto;text-align:center;cursor:pointer;scroll-snap-align:center}
     .kategori-item img{width:64px;height:64px;border-radius:50%;background:#fafafa;border:1px solid var(--border)}
     .kategori-item span{display:block;margin-top:6px;font-size:.85rem;color:#333}
 
-    /* ================= Product card ================= */
-    .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;width:150px}
+    /* Produk card */
+    .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;width:150px;flex-shrink:0}
     .card__img{position:relative}
     .card__img img{width:100%;aspect-ratio:1/1;object-fit:cover}
     .badge{position:absolute;left:8px;top:8px;background:var(--shopee);color:#fff;border-radius:4px;font-size:.72rem;padding:2px 6px;font-weight:700}
@@ -136,24 +80,24 @@
     .chip{display:inline-flex;gap:4px;align-items:center;padding:2px 6px;border:1px solid var(--border);border-radius:6px}
     .chip .star::before{content:"★";color:#ffb400;font-size:.9rem}
 
-    /* ================= Grid ================= */
+    /* Grid */
     .grid{display:grid;gap:12px}
     .grid--2col{grid-template-columns:repeat(2,1fr)}
 
-    /* ================= Footer ================= */
+    /* Footer */
     footer{background:#fff;border-top:1px solid var(--border);padding:18px;color:#666;text-align:center}
   </style>
 </head>
 <body>
 
-  <!-- ========== TOP BAR ========== -->
+  <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar__back"></div>
     <div class="topbar__search"><input placeholder="Cari di Toko"></div>
     <div class="topbar__more"></div>
   </div>
 
-  <!-- ========== STORE HEADER ========== -->
+  <!-- STORE HEADER -->
   <div class="store-hero">
     <div class="store-card">
       <div class="store-card__logo"><img src="Intan Mutiara.jpg" alt="Logo Toko"></div>
@@ -168,7 +112,7 @@
     </div>
   </div>
 
-  <!-- ========== TABS ========== -->
+  <!-- TABS -->
   <div class="tabs-wrap">
     <div class="tabs">
       <a class="tab active" data-tab="toko" href="#">Toko</a>
@@ -177,10 +121,10 @@
     </div>
   </div>
 
-  <!-- ========== CONTENT ========== -->
+  <!-- CONTENT -->
   <main id="tabContent"></main>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer>
     Intan Mutiara, Jl. Pemuda No.27-31, Surabaya • WA: 0896-5342-9419
   </footer>
@@ -270,7 +214,7 @@
         <div class="grid grid--2col">${filtered.length?filtered.map(createProductCard).join(""):"<p>Tidak ada produk</p>"}</div></section>`;
     }
 
-    // Tab click
+    // Tabs
     document.querySelectorAll(".tab").forEach(tab=>{
       tab.addEventListener("click",e=>{
         e.preventDefault();
@@ -280,20 +224,6 @@
         if(tab.dataset.tab==="produk") renderProduk();
         if(tab.dataset.tab==="kategori") renderKategori();
       });
-    });
-
-    // Swipe gesture (mobile)
-    let startX=0;
-    document.addEventListener("touchstart",e=>{startX=e.touches[0].clientX});
-    document.addEventListener("touchend",e=>{
-      let endX=e.changedTouches[0].clientX;
-      let diff=endX-startX;
-      if(Math.abs(diff)>50){
-        const tabs=Array.from(document.querySelectorAll(".tab"));
-        let activeIndex=tabs.findIndex(t=>t.classList.contains("active"));
-        if(diff<0 && activeIndex<tabs.length-1){tabs[activeIndex+1].click()}
-        if(diff>0 && activeIndex>0){tabs[activeIndex-1].click()}
-      }
     });
 
     function openChat(){alert("Fitur chat pembeli & seller akan ditambahkan di sini.")}
