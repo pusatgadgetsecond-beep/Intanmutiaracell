@@ -121,6 +121,10 @@ footer{background:#fff;border-top:1px solid var(--border);padding:18px;color:#66
   font-size:1.5rem;
   margin-bottom:2px;
 }
+.nav-btn.disabled{
+  opacity:0.6;
+  cursor:default;
+}
 .nav-btn:active{
   color: var(--shopee);
 }
@@ -174,7 +178,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:18px;color:#66
 
 <!-- BOTTOM NAVIGATION -->
 <div class="bottom-nav">
-  <button class="nav-btn" onclick="window.location.href='index.html'">
+  <button class="nav-btn" id="homeBtn">
     <span class="icon">🏠</span>
     <span class="label">Home</span>
   </button>
@@ -304,6 +308,15 @@ document.getElementById("searchBox").addEventListener("input",e=>{
 });
 
 function openChat(){alert("Fitur chat pembeli & seller akan ditambahkan di sini.")}
+
+// Tombol Home logic
+const homeBtn = document.getElementById("homeBtn");
+if(window.location.pathname.endsWith("index.html") || window.location.pathname === "/"){
+  homeBtn.classList.add("disabled"); // Tidak aktif
+} else {
+  homeBtn.addEventListener("click", ()=> window.location.href='index.html');
+}
+
 fetchProducts();
 </script>
 </body>
